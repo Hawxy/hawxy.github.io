@@ -1,8 +1,8 @@
 <template>
   <section class="hero relative py-20 sm:py-28">
     <p class="font-mono text-sm">
-      <span class="text-(--ui-secondary)">PS</span>
-      <span class="text-dimmed">C:\Users\hawxy&gt;</span>
+      <span class="text-(--ui-secondary)">PS</span>{{ ' ' }}
+      <span class="text-dimmed">C:\Users\hawxy&gt;</span>{{ ' ' }}
       <span class="text-toned">whoami</span>
     </p>
     <h1 class="hero-name mt-4 w-fit font-mono text-6xl font-bold sm:text-7xl">
