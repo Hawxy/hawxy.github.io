@@ -1,0 +1,112 @@
+[
+  {
+    "section": "major",
+    "repo": "Hawxy/Wallaby",
+    "blurb": null,
+    "docsUrl": "https://wallabycdc.net",
+    "description": "Postgres CDC Engine for .NET",
+    "stars": 6,
+    "language": "C#",
+    "archived": false
+  },
+  {
+    "section": "major",
+    "repo": "Hawxy/Clerk.Net",
+    "blurb": null,
+    "docsUrl": null,
+    "description": "Clerk SDK for .NET/C#",
+    "stars": 86,
+    "language": "C#",
+    "archived": true
+  },
+  {
+    "section": "major",
+    "repo": "Hawxy/Discord.Addons.Hosting",
+    "blurb": null,
+    "docsUrl": null,
+    "description": "Simplifying Discord.NET hosting with .NET Generic Host (Microsoft.Extensions.Hosting)",
+    "stars": 69,
+    "language": "C#",
+    "archived": false
+  },
+  {
+    "section": "major",
+    "repo": "Hawxy/Auth0Net.DependencyInjection",
+    "blurb": null,
+    "docsUrl": null,
+    "description": "Dependency Injection, HttpClientFactory & ASP.NET Core extensions for Auth0.NET",
+    "stars": 48,
+    "language": "C#",
+    "archived": false
+  },
+  {
+    "section": "major",
+    "repo": "Hawxy/Fga.Net",
+    "blurb": null,
+    "docsUrl": null,
+    "description": "OpenFGA & Auth0 FGA for ASP.NET Core + Worker Services",
+    "stars": 40,
+    "language": "C#",
+    "archived": false
+  },
+  {
+    "section": "major",
+    "repo": "Hawxy/cdk-tailscale-bastion",
+    "blurb": null,
+    "docsUrl": null,
+    "description": "Deploys a AWS EC2 (Bastion Host) preconfigured for Tailscale access.",
+    "stars": 32,
+    "language": "TypeScript",
+    "archived": false
+  },
+  {
+    "section": "utility",
+    "repo": "Hawxy/Weasel.Quartz",
+    "blurb": null,
+    "docsUrl": null,
+    "description": "Runtime Postgres SQL initialization & migration for Quartz.NET",
+    "stars": 2,
+    "language": "C#",
+    "archived": false
+  },
+  {
+    "section": "utility",
+    "repo": "Hawxy/OneSchema.AspNetCore",
+    "blurb": null,
+    "docsUrl": null,
+    "description": "OneSchema Webhook Validation for ASP.NET Core",
+    "stars": 0,
+    "language": "C#",
+    "archived": false
+  },
+  {
+    "section": "utility",
+    "repo": "Hawxy/cdk-twingate",
+    "blurb": null,
+    "docsUrl": null,
+    "description": "CDK support for Twingate connectors",
+    "stars": 0,
+    "language": "TypeScript",
+    "archived": false
+  },
+  {
+    "section": "utility",
+    "repo": "Hawxy/vite-plugin-supported-browserslist",
+    "blurb": null,
+    "docsUrl": null,
+    "description": "A Vite plugin for checking if a users browser is compatible at runtime via browserslist",
+    "stars": 0,
+    "language": "TypeScript",
+    "archived": false
+  },
+  {
+    "section": "utility",
+    "repo": "Hawxy/Marten.Rebuilds.Distributed.AspNetCore",
+    "blurb": "Distributed Marten projection rebuilds for ASP.NET Core",
+    "docsUrl": null,
+    "description": null,
+    "stars": 5,
+    "language": "C#",
+    "archived": false
+  }
+]

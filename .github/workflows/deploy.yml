@@ -1,0 +1,69 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v6
+
+      - name: Install node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v6
+
+      - name: Install dependencies
+        run: pnpm install
+
+      # Berkeley Mono is licensed and gitignored; injected from a private repo (EULA permits web font use)
+      - name: Fetch licensed font
+        uses: actions/checkout@v7
+        with:
+          repository: Hawxy/fonts
+          token: ${{ secrets.FONT_REPO_TOKEN }}
+          path: font-assets
+
+      - name: Install font
+        run: |
+          mkdir -p public/fonts
+          cp "font-assets/Berkeley Mono Variable.woff2" public/fonts/BerkeleyMonoVariable.woff2
+
+      - name: Generate site
+        run: |
+          pnpm generate
+          touch .output/public/.nojekyll
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: .output/public
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

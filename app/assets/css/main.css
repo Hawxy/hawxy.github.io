@@ -1,0 +1,134 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+/* Berkeley Mono: licensed font, injected into public/fonts/ (gitignored).
+   Lives in public/ so a missing file degrades to the fallback stack instead of failing the build. */
+@font-face {
+  font-family: 'Berkeley Mono';
+  src: url('/fonts/BerkeleyMonoVariable.woff2') format('woff2-variations');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme static {
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  --font-mono: 'Berkeley Mono', ui-monospace, 'Cascadia Code', Consolas, 'Liberation Mono', monospace;
+
+  /* "neon": phosphor cyan, primary accent */
+  --color-neon-50: #ecfeff;
+  --color-neon-100: #cff9fa;
+  --color-neon-200: #a5f0f2;
+  --color-neon-300: #67e8ea;
+  --color-neon-400: #4de0dc;
+  --color-neon-500: #14b8b6;
+  --color-neon-600: #0e8f94;
+  --color-neon-700: #00707a;
+  --color-neon-800: #155e63;
+  --color-neon-900: #164e52;
+  --color-neon-950: #083344;
+
+  /* "volt": phosphor violet, secondary accent */
+  --color-volt-50: #f5f3ff;
+  --color-volt-100: #ede9fe;
+  --color-volt-200: #ddd6fe;
+  --color-volt-300: #c4b5fd;
+  --color-volt-400: #b18aff;
+  --color-volt-500: #8b5cf6;
+  --color-volt-600: #7c3aed;
+  --color-volt-700: #6633cc;
+  --color-volt-800: #5b21b6;
+  --color-volt-900: #4c1d95;
+  --color-volt-950: #2e1065;
+}
+
+/* Light theme: CRT glass, cool whites, accents at daylight voltage */
+:root {
+  --ui-radius: 2px;
+
+  --ui-bg: #f3f5f8;
+  --ui-bg-muted: #e8ecf1;
+  --ui-bg-elevated: #fbfcfe;
+  --ui-bg-accented: #dee3ea;
+
+  --ui-text-dimmed: #8a93a3;
+  --ui-text-muted: #697180;
+  --ui-text-toned: #454b55;
+  --ui-text: #2b313b;
+  --ui-text-highlighted: #15181e;
+
+  --ui-border: #d2d8e0;
+  --ui-border-muted: #dee3ea;
+  --ui-border-accented: #a9b3c0;
+
+  --ui-primary: var(--ui-color-primary-700);
+  --ui-secondary: var(--ui-color-secondary-700);
+
+  /* Two-layer neon glow: tight halo + wide bloom, hover/focus only */
+  --glow-primary: 0 0 4px rgba(14, 143, 148, 0.5), 0 0 18px rgba(14, 143, 148, 0.28);
+  --glow-secondary: 0 0 4px rgba(124, 58, 237, 0.5), 0 0 18px rgba(124, 58, 237, 0.28);
+}
+
+/* Dark theme: near-black, text softened to ~14:1 to avoid halation, hotter glows */
+.dark {
+  --ui-bg: #0d0d0d;
+  --ui-bg-muted: #1a1a1a;
+  --ui-bg-elevated: #161616;
+  --ui-bg-accented: #202020;
+
+  --ui-text-dimmed: #6a6a6a;
+  --ui-text-muted: #878787;
+  --ui-text-toned: #ababab;
+  --ui-text: #cfcfcf;
+  --ui-text-highlighted: #e0e0e0;
+
+  --ui-border: #2a2a2a;
+  --ui-border-muted: #1f1f1f;
+  --ui-border-accented: #3f3f3f;
+
+  --ui-primary: var(--ui-color-primary-400);
+  --ui-secondary: var(--ui-color-secondary-400);
+
+  --glow-primary: 0 0 5px rgba(77, 224, 220, 0.6), 0 0 20px rgba(77, 224, 220, 0.35);
+  --glow-secondary: 0 0 5px rgba(177, 138, 255, 0.6), 0 0 20px rgba(177, 138, 255, 0.35);
+}
+
+body {
+  background-color: var(--ui-bg);
+  color: var(--ui-text);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--ui-primary) 25%, transparent);
+}
+
+:focus-visible {
+  outline: 1px solid var(--ui-primary);
+  outline-offset: 2px;
+}
+
+/* Squared terminal scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ui-border);
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ui-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
