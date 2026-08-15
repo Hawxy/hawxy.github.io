@@ -1,6 +1,32 @@
 <script setup lang="ts">
 const major = allProjects.filter(p => p.section === 'major')
+const jasperfx = allProjects.filter(p => p.section === 'jasperfx')
 const utility = allProjects.filter(p => p.section === 'utility')
+
+const activeSection = useActiveSection()
+const sectionIds = ['major-projects', 'jasperfx', 'utility-projects']
+
+function updateActiveSection() {
+  const headerHeight = document.querySelector('header')?.getBoundingClientRect().height ?? 56
+  let active: string | null = null
+  for (const id of sectionIds) {
+    const heading = document.getElementById(id)
+    if (heading && heading.getBoundingClientRect().top <= headerHeight) {
+      active = id
+    }
+  }
+  activeSection.value = active
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', updateActiveSection, { passive: true })
+  updateActiveSection()
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', updateActiveSection)
+  activeSection.value = null
+})
 </script>
 
 <template>
@@ -18,6 +44,23 @@ const utility = allProjects.filter(p => p.section === 'utility')
       <div class="grid gap-4 sm:grid-cols-2">
         <ProjectCard
           v-for="project in major"
+          :key="project.repo"
+          :project="project"
+        />
+      </div>
+    </section>
+
+    <section
+      aria-labelledby="jasperfx"
+      class="pb-16"
+    >
+      <SectionHeading
+        heading-id="jasperfx"
+        label="JasperFx"
+      />
+      <div class="grid gap-4 sm:grid-cols-2">
+        <ProjectCard
+          v-for="project in jasperfx"
           :key="project.repo"
           :project="project"
         />

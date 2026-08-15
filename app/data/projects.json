@@ -12,7 +12,7 @@
     "downloads": 7280
   },
   {
-    "section": "major",
+    "section": "jasperfx",
     "repo": "JasperFx/marten",
     "blurb": null,
     "docsUrl": "https://martendb.io",
@@ -24,7 +24,7 @@
     "downloads": 18600109
   },
   {
-    "section": "major",
+    "section": "jasperfx",
     "repo": "JasperFx/alba",
     "blurb": null,
     "docsUrl": "https://jasperfx.github.io/alba/",

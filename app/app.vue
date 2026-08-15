@@ -11,6 +11,8 @@ useHead({
   }
 })
 
+const activeSection = useActiveSection()
+
 const title = 'Hawxy'
 const description = '.NET & TypeScript open source: Postgres change data capture, auth tooling and cloud infrastructure.'
 
@@ -26,7 +28,11 @@ useSeoMeta({
   <UApp>
     <header class="sticky top-0 z-10 border-b border-default bg-default/80 backdrop-blur">
       <div class="mx-auto flex max-w-4xl items-center justify-between px-6 py-3">
-        <span class="font-mono text-sm font-semibold text-highlighted"><span class="font-normal text-dimmed">PS</span> C:\hawxy<span class="font-normal text-dimmed">&gt;</span></span>
+        <span class="min-w-0 truncate font-mono text-sm font-semibold text-highlighted"><span class="font-normal text-dimmed">PS</span> C:\hawxy<span class="font-normal text-dimmed">&gt;</span><span
+          v-if="activeSection"
+          :key="activeSection"
+          class="header-cmd font-normal"
+        >{{ ' ' }}<span class="text-dimmed">ls</span>{{ ' ' }}<span class="text-(--ui-primary)">.\{{ activeSection }}\</span></span></span>
         <div class="flex items-center gap-1">
           <UColorModeButton />
           <UButton
@@ -54,3 +60,21 @@ useSeoMeta({
     </footer>
   </UApp>
 </template>
+
+<style scoped>
+/* Command typed into the title bar as its section heading scrolls underneath */
+.header-cmd {
+  display: inline-block;
+  white-space: pre;
+  animation: cmd-wipe 0.4s steps(10) both;
+}
+
+@keyframes cmd-wipe {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+</style>

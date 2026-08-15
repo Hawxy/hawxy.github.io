@@ -5,6 +5,9 @@ const props = defineProps<{
 }>()
 
 const slug = computed(() => props.label.toLowerCase().replace(/\s+/g, '-'))
+
+const activeSection = useActiveSection()
+const isActive = computed(() => activeSection.value === slug.value)
 </script>
 
 <template>
@@ -12,7 +15,8 @@ const slug = computed(() => props.label.toLowerCase().replace(/\s+/g, '-'))
     <h2
       :id="headingId"
       :aria-label="label"
-      class="shrink-0 font-mono text-sm"
+      class="shrink-0 font-mono text-sm transition-opacity duration-500"
+      :style="{ opacity: isActive ? 0.25 : 1 }"
     >
       <span aria-hidden="true">
         <span class="text-dimmed">PS&gt; ls</span>
