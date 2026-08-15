@@ -17,9 +17,10 @@ const utility = allProjects.filter(p => p.section === 'utility')
       />
       <div class="grid gap-4 sm:grid-cols-2">
         <ProjectCard
-          v-for="project in major"
+          v-for="(project, index) in major"
           :key="project.repo"
           :project="project"
+          :index="index"
         />
       </div>
     </section>

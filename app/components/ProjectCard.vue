@@ -1,7 +1,10 @@
 <script setup lang="ts">
 const props = defineProps<{
   project: Project
+  index: number
 }>()
+
+const indexLabel = computed(() => String(props.index + 1).padStart(2, '0'))
 
 const name = computed(() => projectName(props.project))
 const text = computed(() => projectText(props.project))
@@ -11,6 +14,10 @@ const text = computed(() => projectText(props.project))
   <article class="project-card relative flex flex-col border border-default bg-elevated p-5">
     <div class="flex items-start justify-between gap-3">
       <h3 class="font-mono text-base font-semibold text-highlighted">
+        <span
+          class="mr-1 font-normal text-dimmed"
+          aria-hidden="true"
+        >[{{ indexLabel }}]</span>
         <a
           :href="`https://github.com/${project.repo}`"
           target="_blank"

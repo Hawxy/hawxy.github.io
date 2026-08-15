@@ -67,6 +67,10 @@
   /* Two-layer neon glow: tight halo + wide bloom, hover/focus only */
   --glow-primary: 0 0 4px rgba(14, 143, 148, 0.5), 0 0 18px rgba(14, 143, 148, 0.28);
   --glow-secondary: 0 0 4px rgba(124, 58, 237, 0.5), 0 0 18px rgba(124, 58, 237, 0.28);
+
+  /* Phosphor text glow (always on, display text only) and CRT scanline tint */
+  --text-glow-primary: 0 0 6px rgba(14, 143, 148, 0.4), 0 0 24px rgba(14, 143, 148, 0.2);
+  --scanline: rgba(21, 24, 30, 0.04);
 }
 
 /* Dark theme: near-black, text softened to ~14:1 to avoid halation, hotter glows */
@@ -91,12 +95,25 @@
 
   --glow-primary: 0 0 5px rgba(77, 224, 220, 0.6), 0 0 20px rgba(77, 224, 220, 0.35);
   --glow-secondary: 0 0 5px rgba(177, 138, 255, 0.6), 0 0 20px rgba(177, 138, 255, 0.35);
+
+  --text-glow-primary: 0 0 7px rgba(77, 224, 220, 0.55), 0 0 28px rgba(77, 224, 220, 0.3);
+  --scanline: rgba(0, 0, 0, 0.22);
 }
 
 body {
   background-color: var(--ui-bg);
   color: var(--ui-text);
   font-family: var(--font-sans);
+}
+
+/* CRT scanlines over the whole viewport */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  background: repeating-linear-gradient(to bottom, var(--scanline) 0 1px, transparent 1px 3px);
 }
 
 ::selection {

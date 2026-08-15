@@ -16,7 +16,10 @@ const text = computed(() => projectText(props.project))
       class="utility-row group flex flex-wrap items-baseline gap-x-4 gap-y-1 px-4 py-3"
     >
       <span class="font-mono text-sm font-medium text-highlighted transition-colors group-hover:text-(--ui-primary)">
-        {{ name }}
+        <span
+          class="font-normal text-dimmed"
+          aria-hidden="true"
+        >./</span>{{ name }}
       </span>
       <span class="min-w-40 flex-1 text-sm text-muted">{{ text }}</span>
       <span class="font-mono text-xs text-dimmed">

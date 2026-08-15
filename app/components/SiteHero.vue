@@ -1,12 +1,16 @@
 <template>
   <section class="hero relative py-20 sm:py-28">
-    <p class="font-mono text-xs uppercase tracking-[0.08em] text-(--ui-primary)">
-      // personal portfolio
+    <p class="font-mono text-sm">
+      <span class="text-(--ui-secondary)">hawxy@github</span><span class="text-dimmed">:~$</span>
+      <span class="text-toned">whoami</span>
     </p>
-    <h1 class="hero-name mt-3 w-fit font-mono text-6xl font-bold sm:text-7xl">
-      Hawxy
+    <h1 class="hero-name mt-4 w-fit font-mono text-6xl font-bold sm:text-7xl">
+      Hawxy<span
+        class="cursor"
+        aria-hidden="true"
+      >█</span>
     </h1>
-    <p class="mt-5 max-w-xl text-lg text-toned">
+    <p class="mt-6 max-w-xl text-lg text-toned">
       .NET &amp; TypeScript open source: Postgres change data capture,
       auth tooling and cloud infrastructure.
     </p>
@@ -27,9 +31,25 @@
 
 <style scoped>
 .hero-name {
-  background: linear-gradient(150deg, var(--ui-primary) 30%, var(--ui-secondary));
-  background-clip: text;
-  color: transparent;
+  color: var(--ui-primary);
+  text-shadow: var(--text-glow-primary);
+}
+
+.cursor {
+  margin-left: 0.08em;
+  animation: blink 1.1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor {
+    animation: none;
+  }
 }
 
 /* Blueprint grid, faded toward the bottom */
@@ -41,7 +61,7 @@
   background-image:
     repeating-linear-gradient(to right, var(--ui-border) 0 1px, transparent 1px 48px),
     repeating-linear-gradient(to bottom, var(--ui-border) 0 1px, transparent 1px 48px);
-  opacity: 0.35;
+  opacity: 0.25;
   mask-image: linear-gradient(to bottom, black 20%, transparent);
 }
 
