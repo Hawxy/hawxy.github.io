@@ -1,6 +1,15 @@
+<script setup lang="ts">
+const activeSection = useActiveSection()
+const isActive = computed(() => activeSection.value === 'whoami')
+</script>
+
 <template>
   <section class="hero relative py-20 sm:py-28">
-    <p class="font-mono text-sm">
+    <p
+      id="whoami"
+      class="font-mono text-sm transition-opacity duration-500"
+      :style="{ opacity: isActive ? 0.25 : 1 }"
+    >
       <span class="text-(--ui-secondary)">PS</span>{{ ' ' }}
       <span class="text-dimmed">C:\Users\hawxy&gt;</span>{{ ' ' }}
       <span class="text-toned">whoami</span>

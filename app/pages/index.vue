@@ -4,7 +4,7 @@ const jasperfx = allProjects.filter(p => p.section === 'jasperfx')
 const utility = allProjects.filter(p => p.section === 'utility')
 
 const activeSection = useActiveSection()
-const sectionIds = ['major-projects', 'jasperfx', 'utility-projects']
+const sectionIds = ['whoami', 'major-projects', 'jasperfx', 'utility-projects']
 
 function updateActiveSection() {
   const headerHeight = document.querySelector('header')?.getBoundingClientRect().height ?? 56
@@ -48,15 +48,11 @@ onBeforeUnmount(() => {
           :project="project"
         />
       </div>
-    </section>
 
-    <section
-      aria-labelledby="jasperfx"
-      class="pb-16"
-    >
-      <SectionHeading
+      <SectionSubheading
         heading-id="jasperfx"
         label="JasperFx"
+        parent="major-projects"
       />
       <div class="grid gap-4 sm:grid-cols-2">
         <ProjectCard

@@ -12,42 +12,6 @@
     "downloads": 7280
   },
   {
-    "section": "jasperfx",
-    "repo": "JasperFx/marten",
-    "blurb": null,
-    "docsUrl": "https://martendb.io",
-    "nuget": "Marten",
-    "description": ".NET Transactional Document DB and Event Store on PostgreSQL",
-    "stars": 3442,
-    "language": "C#",
-    "archived": false,
-    "downloads": 18600109
-  },
-  {
-    "section": "jasperfx",
-    "repo": "JasperFx/alba",
-    "blurb": null,
-    "docsUrl": "https://jasperfx.github.io/alba/",
-    "nuget": "Alba",
-    "description": "Easy integration testing for ASP.NET Core applications",
-    "stars": 516,
-    "language": "C#",
-    "archived": false,
-    "downloads": 3494296
-  },
-  {
-    "section": "major",
-    "repo": "Hawxy/Discord.Addons.Hosting",
-    "blurb": null,
-    "docsUrl": null,
-    "nuget": "Discord.Addons.Hosting",
-    "description": "Simplifying Discord.NET hosting with .NET Generic Host (Microsoft.Extensions.Hosting)",
-    "stars": 69,
-    "language": "C#",
-    "archived": false,
-    "downloads": 78026
-  },
-  {
     "section": "major",
     "repo": "Hawxy/Auth0Net.DependencyInjection",
     "blurb": null,
@@ -73,6 +37,42 @@
   },
   {
     "section": "major",
+    "repo": "Hawxy/Discord.Addons.Hosting",
+    "blurb": null,
+    "docsUrl": null,
+    "nuget": "Discord.Addons.Hosting",
+    "description": "Simplifying Discord.NET hosting with .NET Generic Host (Microsoft.Extensions.Hosting)",
+    "stars": 69,
+    "language": "C#",
+    "archived": false,
+    "downloads": 78026
+  },
+  {
+    "section": "jasperfx",
+    "repo": "JasperFx/marten",
+    "blurb": null,
+    "docsUrl": "https://martendb.io",
+    "nuget": "Marten",
+    "description": ".NET Transactional Document DB and Event Store on PostgreSQL",
+    "stars": 3442,
+    "language": "C#",
+    "archived": false,
+    "downloads": 18600109
+  },
+  {
+    "section": "jasperfx",
+    "repo": "JasperFx/alba",
+    "blurb": null,
+    "docsUrl": "https://jasperfx.github.io/alba/",
+    "nuget": "Alba",
+    "description": "Easy integration testing for ASP.NET Core applications",
+    "stars": 516,
+    "language": "C#",
+    "archived": false,
+    "downloads": 3494296
+  },
+  {
+    "section": "utility",
     "repo": "Hawxy/cdk-tailscale-bastion",
     "blurb": null,
     "docsUrl": null,

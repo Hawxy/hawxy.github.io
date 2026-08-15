@@ -13,6 +13,12 @@ useHead({
 
 const activeSection = useActiveSection()
 
+const sectionPaths: Record<string, string> = {
+  'major-projects': '.\\major-projects\\',
+  'jasperfx': '.\\major-projects\\jasperfx\\',
+  'utility-projects': '.\\utility-projects\\'
+}
+
 const title = 'Hawxy'
 const description = '.NET & TypeScript open source: Postgres change data capture, auth tooling and cloud infrastructure.'
 
@@ -32,7 +38,7 @@ useSeoMeta({
           v-if="activeSection"
           :key="activeSection"
           class="header-cmd font-normal"
-        >{{ ' ' }}<span class="text-dimmed">ls</span>{{ ' ' }}<span class="text-(--ui-primary)">.\{{ activeSection }}\</span></span></span>
+        ><template v-if="activeSection === 'whoami'">{{ ' ' }}<span class="text-toned">whoami</span></template><template v-else>{{ ' ' }}<span class="text-dimmed">ls</span>{{ ' ' }}<span class="text-(--ui-primary)">{{ sectionPaths[activeSection] }}</span></template></span></span>
         <div class="flex items-center gap-1">
           <UColorModeButton />
           <UButton
