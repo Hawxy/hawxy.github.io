@@ -26,6 +26,18 @@ for (const project of projects) {
   } catch (error) {
     console.warn(`[fetch-projects] ${project.repo}: ${error.message}, keeping snapshot values`)
   }
+
+  if (!project.nuget) continue
+  try {
+    const res = await fetch(`https://azuresearch-usnc.nuget.org/query?q=packageid:${project.nuget}&prerelease=true`)
+    if (!res.ok) throw new Error(`HTTP ${res.status}`)
+    const result = await res.json()
+    if (result.totalHits === 0) throw new Error('package not found')
+    project.downloads = result.data[0].totalDownloads
+    console.log(`[fetch-projects] ${project.nuget}: ${project.downloads} downloads`)
+  } catch (error) {
+    console.warn(`[fetch-projects] ${project.nuget}: ${error.message}, keeping snapshot values`)
+  }
 }
 
 await writeFile(file, JSON.stringify(projects, null, 2) + '\n')

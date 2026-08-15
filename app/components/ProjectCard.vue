@@ -5,6 +5,7 @@ const props = defineProps<{
 
 const name = computed(() => projectName(props.project))
 const text = computed(() => projectText(props.project))
+const langIcon = computed(() => languageIcon(props.project.language))
 </script>
 
 <template>
@@ -34,8 +35,27 @@ const text = computed(() => projectText(props.project))
     </p>
 
     <div class="mt-4 flex items-center gap-4 font-mono text-xs text-muted">
-      <span v-if="project.language">{{ project.language }}</span>
-      <span aria-label="GitHub stars">★ {{ project.stars }}</span>
+      <UIcon
+        v-if="langIcon"
+        :name="langIcon"
+        :title="project.language ?? undefined"
+        :aria-label="project.language ?? undefined"
+        class="size-3.5"
+      />
+      <span aria-label="GitHub stars">★ {{ formatCount(project.stars) }}</span>
+      <a
+        v-if="project.nuget && project.downloads != null"
+        :href="`https://www.nuget.org/packages/${project.nuget}`"
+        target="_blank"
+        rel="noopener"
+        class="relative z-10 inline-flex items-center gap-1.5 transition-colors hover:text-(--ui-primary)"
+        :aria-label="`${project.nuget} on NuGet`"
+      >
+        <UIcon
+          name="i-simple-icons-nuget"
+          class="size-3.5"
+        />{{ formatCount(project.downloads) }}
+      </a>
       <a
         v-if="project.docsUrl"
         :href="project.docsUrl"

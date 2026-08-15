@@ -5,6 +5,7 @@ const props = defineProps<{
 
 const name = computed(() => projectName(props.project))
 const text = computed(() => projectText(props.project))
+const langIcon = computed(() => languageIcon(props.project.language))
 </script>
 
 <template>
@@ -19,8 +20,25 @@ const text = computed(() => projectText(props.project))
         {{ name }}
       </span>
       <span class="min-w-40 flex-1 text-sm text-muted">{{ text }}</span>
-      <span class="font-mono text-xs text-dimmed">
-        <template v-if="project.language">{{ project.language }} · </template>★ {{ project.stars }}
+      <span class="inline-flex items-center gap-3 font-mono text-xs text-dimmed">
+        <UIcon
+          v-if="langIcon"
+          :name="langIcon"
+          :title="project.language ?? undefined"
+          :aria-label="project.language ?? undefined"
+          class="size-3.5"
+        />
+        <span aria-label="GitHub stars">★ {{ formatCount(project.stars) }}</span>
+        <span
+          v-if="project.nuget && project.downloads != null"
+          class="inline-flex items-center gap-1.5"
+          aria-label="NuGet downloads"
+        >
+          <UIcon
+            name="i-simple-icons-nuget"
+            class="size-3.5"
+          />{{ formatCount(project.downloads) }}
+        </span>
       </span>
     </a>
   </li>
