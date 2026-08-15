@@ -34,7 +34,7 @@ useSeoMeta({
   <UApp>
     <header class="sticky top-0 z-10 border-b border-default bg-default/80 backdrop-blur">
       <div class="mx-auto flex max-w-4xl items-center justify-between px-6 py-3">
-        <span class="min-w-0 truncate font-mono text-sm font-semibold text-highlighted"><span class="font-normal text-dimmed">PS</span> C:\hawxy<span class="font-normal text-dimmed">&gt;</span><span
+        <span class="min-w-0 truncate font-mono text-sm font-semibold text-highlighted"><span class="font-normal text-dimmed">PS</span> C:\Users\hawxy<span class="font-normal text-dimmed">&gt;</span><span
           v-if="activeSection"
           :key="activeSection"
           class="header-cmd font-normal"
