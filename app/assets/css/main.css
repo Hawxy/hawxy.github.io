@@ -70,7 +70,7 @@
 
   /* Phosphor text glow (always on, display text only) and CRT scanline tint */
   --text-glow-primary: 0 0 6px rgba(14, 143, 148, 0.4), 0 0 24px rgba(14, 143, 148, 0.2);
-  --scanline: rgba(21, 24, 30, 0.04);
+  --scanline: rgba(21, 24, 30, 0.02);
 }
 
 /* Dark theme: near-black, text softened to ~14:1 to avoid halation, hotter glows */
@@ -97,7 +97,7 @@
   --glow-secondary: 0 0 5px rgba(177, 138, 255, 0.6), 0 0 20px rgba(177, 138, 255, 0.35);
 
   --text-glow-primary: 0 0 7px rgba(77, 224, 220, 0.55), 0 0 28px rgba(77, 224, 220, 0.3);
-  --scanline: rgba(0, 0, 0, 0.22);
+  --scanline: rgba(0, 0, 0, 0.09);
 }
 
 body {
@@ -113,7 +113,7 @@ body::after {
   inset: 0;
   z-index: 50;
   pointer-events: none;
-  background: repeating-linear-gradient(to bottom, var(--scanline) 0 1px, transparent 1px 3px);
+  background: repeating-linear-gradient(to bottom, var(--scanline) 0 1px, transparent 1px 4px);
 }
 
 ::selection {
