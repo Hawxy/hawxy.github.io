@@ -19,7 +19,7 @@ const text = computed(() => projectText(props.project))
         <span
           class="font-normal text-dimmed"
           aria-hidden="true"
-        >./</span>{{ name }}
+        >.\</span>{{ name }}
       </span>
       <span class="min-w-40 flex-1 text-sm text-muted">{{ text }}</span>
       <span class="font-mono text-xs text-dimmed">

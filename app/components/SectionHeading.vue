@@ -15,8 +15,8 @@ const slug = computed(() => props.label.toLowerCase().replace(/\s+/g, '-'))
       class="shrink-0 font-mono text-sm"
     >
       <span aria-hidden="true">
-        <span class="text-dimmed">$ ls</span>
-        <span class="ml-2 font-semibold text-(--ui-primary)">./{{ slug }}/</span>
+        <span class="text-dimmed">PS&gt; ls</span>
+        <span class="ml-2 font-semibold text-(--ui-primary)">.\{{ slug }}\</span>
       </span>
     </h2>
     <div

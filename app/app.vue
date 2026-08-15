@@ -26,7 +26,7 @@ useSeoMeta({
   <UApp>
     <header class="sticky top-0 z-10 border-b border-default bg-default/80 backdrop-blur">
       <div class="mx-auto flex max-w-4xl items-center justify-between px-6 py-3">
-        <span class="font-mono text-sm font-semibold text-highlighted">hawxy<span class="font-normal text-dimmed">@github:~$</span></span>
+        <span class="font-mono text-sm font-semibold text-highlighted"><span class="font-normal text-dimmed">PS</span> C:\hawxy<span class="font-normal text-dimmed">&gt;</span></span>
         <div class="flex items-center gap-1">
           <UColorModeButton />
           <UButton

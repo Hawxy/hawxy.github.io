@@ -1,14 +1,15 @@
 <template>
   <section class="hero relative py-20 sm:py-28">
     <p class="font-mono text-sm">
-      <span class="text-(--ui-secondary)">hawxy@github</span><span class="text-dimmed">:~$</span>
+      <span class="text-(--ui-secondary)">PS</span>
+      <span class="text-dimmed">C:\Users\hawxy&gt;</span>
       <span class="text-toned">whoami</span>
     </p>
     <h1 class="hero-name mt-4 w-fit font-mono text-6xl font-bold sm:text-7xl">
       Hawxy<span
         class="cursor"
         aria-hidden="true"
-      >█</span>
+      >_</span>
     </h1>
     <p class="mt-6 max-w-xl text-lg text-toned">
       .NET &amp; TypeScript open source: Postgres change data capture,
