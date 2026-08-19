@@ -6,7 +6,7 @@
 </template>
 
 <style scoped>
-/* Rubber-stamp marker for repos under a year old */
+/* Marker for repos under a year old */
 .new-stamp {
   display: inline-block;
   padding: 1px 7px;
@@ -17,6 +17,5 @@
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.14em;
-  transform: rotate(-6deg);
 }
 </style>
