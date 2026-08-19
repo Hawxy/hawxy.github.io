@@ -21,10 +21,17 @@ const isActive = computed(() => activeSection.value === 'whoami')
       >_</span>
     </h1>
     <p class="mt-6 max-w-xl text-lg text-toned">
-      .NET &amp; TypeScript open source: Postgres change data capture,
-      auth tooling and cloud infrastructure.
+      I'm a C#, Vue.js &amp; AWS Architect. I maintain or contribute to a range
+      of projects, and assist in maintaining the JasperFx ecosystem.
     </p>
-    <div class="mt-8 flex gap-3">
+    <p class="mt-3 max-w-xl text-toned">
+      You can reach out via
+      <a
+        href="mailto:software@hawx.dev"
+        class="text-(--ui-primary) underline underline-offset-2"
+      >software@hawx.dev</a>.
+    </p>
+    <div class="mt-8 flex flex-wrap gap-3">
       <UButton
         to="https://github.com/Hawxy"
         target="_blank"
@@ -34,6 +41,16 @@ const isActive = computed(() => activeSection.value === 'whoami')
         class="glow-button font-mono"
       >
         github.com/Hawxy
+      </UButton>
+      <UButton
+        to="https://github.com/sponsors/Hawxy"
+        target="_blank"
+        icon="i-lucide-heart"
+        color="neutral"
+        variant="outline"
+        class="glow-button-secondary font-mono"
+      >
+        Sponsor
       </UButton>
     </div>
   </section>
@@ -75,11 +92,16 @@ const isActive = computed(() => activeSection.value === 'whoami')
   mask-image: linear-gradient(to bottom, black 20%, transparent);
 }
 
-.glow-button {
+.glow-button,
+.glow-button-secondary {
   transition: border-color 0.25s, box-shadow 0.25s;
 }
 .glow-button:hover,
 .glow-button:focus-visible {
   box-shadow: var(--glow-primary);
+}
+.glow-button-secondary:hover,
+.glow-button-secondary:focus-visible {
+  box-shadow: var(--glow-secondary);
 }
 </style>

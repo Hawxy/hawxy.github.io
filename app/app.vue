@@ -20,7 +20,7 @@ const sectionPaths: Record<string, string> = {
 }
 
 const title = 'Hawxy'
-const description = '.NET & TypeScript open source: Postgres change data capture, auth tooling and cloud infrastructure.'
+const description = 'C#, Vue.js & AWS Architect maintaining .NET and TypeScript open source, including the JasperFx ecosystem.'
 
 useSeoMeta({
   title,
