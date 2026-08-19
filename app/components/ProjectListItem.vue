@@ -6,6 +6,7 @@ const props = defineProps<{
 const name = computed(() => projectName(props.project))
 const text = computed(() => projectText(props.project))
 const langIcon = computed(() => languageIcon(props.project.language))
+const isNew = computed(() => isNewProject(props.project))
 </script>
 
 <template>
@@ -19,6 +20,7 @@ const langIcon = computed(() => languageIcon(props.project.language))
       <span class="font-mono text-sm font-medium text-highlighted transition-colors group-hover:text-(--ui-primary)">
         {{ name }}
       </span>
+      <NewStamp v-if="isNew" />
       <span class="min-w-40 flex-1 text-sm text-muted">{{ text }}</span>
       <span class="inline-flex items-center gap-3 font-mono text-xs text-dimmed">
         <UIcon

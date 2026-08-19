@@ -20,7 +20,8 @@ for (const project of projects) {
       description: repo.description,
       stars: repo.stargazers_count,
       language: repo.language,
-      archived: repo.archived
+      archived: repo.archived,
+      createdAt: repo.created_at
     })
     console.log(`[fetch-projects] ${project.repo}: ${project.stars} stars`)
   } catch (error) {

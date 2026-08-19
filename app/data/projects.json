@@ -9,7 +9,8 @@
     "stars": 6,
     "language": "C#",
     "archived": false,
-    "downloads": 7280
+    "downloads": 7581,
+    "createdAt": "2026-05-29T10:17:26Z"
   },
   {
     "section": "major",
@@ -17,11 +18,12 @@
     "blurb": null,
     "docsUrl": null,
     "nuget": "Auth0Net.DependencyInjection",
-    "description": "Dependency Injection, HttpClientFactory & ASP.NET Core extensions for Auth0.NET",
+    "description": "Dependency Injection & HttpClientFactory extensions for Auth0.NET",
     "stars": 48,
     "language": "C#",
     "archived": false,
-    "downloads": 751582
+    "downloads": 754841,
+    "createdAt": "2020-11-17T13:04:04Z"
   },
   {
     "section": "major",
@@ -33,7 +35,8 @@
     "stars": 40,
     "language": "C#",
     "archived": false,
-    "downloads": 124677
+    "downloads": 124890,
+    "createdAt": "2021-11-22T01:00:24Z"
   },
   {
     "section": "major",
@@ -45,7 +48,8 @@
     "stars": 69,
     "language": "C#",
     "archived": false,
-    "downloads": 78026
+    "downloads": 78212,
+    "createdAt": "2018-10-13T14:44:47Z"
   },
   {
     "section": "jasperfx",
@@ -54,10 +58,11 @@
     "docsUrl": "https://martendb.io",
     "nuget": "Marten",
     "description": ".NET Transactional Document DB and Event Store on PostgreSQL",
-    "stars": 3442,
+    "stars": 3444,
     "language": "C#",
     "archived": false,
-    "downloads": 18600109
+    "downloads": 18693117,
+    "createdAt": "2015-10-12T18:11:12Z"
   },
   {
     "section": "jasperfx",
@@ -69,7 +74,8 @@
     "stars": 516,
     "language": "C#",
     "archived": false,
-    "downloads": 3494296
+    "downloads": 3514950,
+    "createdAt": "2015-12-02T19:50:10Z"
   },
   {
     "section": "utility",
@@ -81,7 +87,8 @@
     "stars": 32,
     "language": "TypeScript",
     "archived": false,
-    "downloads": null
+    "downloads": null,
+    "createdAt": "2022-07-03T08:47:45Z"
   },
   {
     "section": "utility",
@@ -93,7 +100,8 @@
     "stars": 2,
     "language": "C#",
     "archived": false,
-    "downloads": 19282
+    "downloads": 19358,
+    "createdAt": "2024-07-06T16:10:32Z"
   },
   {
     "section": "utility",
@@ -105,7 +113,8 @@
     "stars": 0,
     "language": "C#",
     "archived": false,
-    "downloads": 1105
+    "downloads": 1171,
+    "createdAt": "2026-03-23T11:01:19Z"
   },
   {
     "section": "utility",
@@ -117,7 +126,8 @@
     "stars": 0,
     "language": "TypeScript",
     "archived": false,
-    "downloads": null
+    "downloads": null,
+    "createdAt": "2025-03-17T08:59:03Z"
   },
   {
     "section": "utility",
@@ -129,7 +139,8 @@
     "stars": 0,
     "language": "TypeScript",
     "archived": false,
-    "downloads": null
+    "downloads": null,
+    "createdAt": "2024-11-03T07:19:12Z"
   },
   {
     "section": "utility",
@@ -141,6 +152,7 @@
     "stars": 5,
     "language": "C#",
     "archived": false,
-    "downloads": null
+    "downloads": null,
+    "createdAt": "2023-03-15T11:00:09Z"
   }
 ]

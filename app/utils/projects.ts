@@ -10,6 +10,7 @@ export interface Project {
   stars: number
   language: string | null
   archived: boolean
+  createdAt: string | null
   downloads: number | null
 }
 
@@ -21,6 +22,12 @@ export function projectName(project: Project): string {
 
 export function projectText(project: Project): string {
   return project.blurb ?? project.description ?? ''
+}
+
+export function isNewProject(project: Project): boolean {
+  if (!project.createdAt) return false
+  const yearMs = 365 * 24 * 60 * 60 * 1000
+  return Date.now() - new Date(project.createdAt).getTime() < yearMs
 }
 
 export function languageIcon(language: string | null): string | null {

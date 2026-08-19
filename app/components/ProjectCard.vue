@@ -6,6 +6,7 @@ const props = defineProps<{
 const name = computed(() => projectName(props.project))
 const text = computed(() => projectText(props.project))
 const langIcon = computed(() => languageIcon(props.project.language))
+const isNew = computed(() => isNewProject(props.project))
 </script>
 
 <template>
@@ -19,15 +20,21 @@ const langIcon = computed(() => languageIcon(props.project.language))
           class="card-link"
         >{{ name }}</a>
       </h3>
-      <UBadge
-        v-if="project.archived"
-        color="neutral"
-        variant="outline"
-        size="sm"
-        class="font-mono uppercase tracking-[0.08em]"
+      <span
+        v-if="isNew || project.archived"
+        class="flex items-center gap-2"
       >
-        Archived
-      </UBadge>
+        <NewStamp v-if="isNew" />
+        <UBadge
+          v-if="project.archived"
+          color="neutral"
+          variant="outline"
+          size="sm"
+          class="font-mono uppercase tracking-[0.08em]"
+        >
+          Archived
+        </UBadge>
+      </span>
     </div>
 
     <p class="mt-2 flex-1 text-sm text-toned">
