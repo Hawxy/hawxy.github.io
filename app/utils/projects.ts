@@ -4,6 +4,7 @@ export interface Project {
   section: string
   repo: string
   blurb: string | null
+  logo: string | null
   docsUrl: string | null
   nuget: string | null
   description: string | null
@@ -33,7 +34,7 @@ export function isNewProject(project: Project): boolean {
 export function languageIcon(language: string | null): string | null {
   switch (language) {
     case 'C#':
-      return 'i-simple-icons-dotnet'
+      return 'i-simple-icons-csharp'
     case 'TypeScript':
       return 'i-simple-icons-typescript'
     default:

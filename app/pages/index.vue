@@ -2,9 +2,11 @@
 const major = allProjects.filter(p => p.section === 'major')
 const jasperfx = allProjects.filter(p => p.section === 'jasperfx')
 const utility = allProjects.filter(p => p.section === 'utility')
+const utilityTs = utility.filter(p => p.language === 'TypeScript')
+const utilityDotnet = utility.filter(p => p.language !== 'TypeScript')
 
 const activeSection = useActiveSection()
-const sectionIds = ['whoami', 'major-projects', 'jasperfx', 'utility-projects']
+const sectionIds = ['whoami', 'major-projects', 'jasperfx', 'utility-projects', 'dotnet', 'ts']
 
 function updateActiveSection() {
   const headerHeight = document.querySelector('header')?.getBoundingClientRect().height ?? 56
@@ -71,9 +73,27 @@ onBeforeUnmount(() => {
         heading-id="utility-projects"
         label="Utility projects"
       />
+      <SectionSubheading
+        heading-id="dotnet"
+        label="dotnet"
+        parent="utility-projects"
+      />
       <ul class="border-y border-default divide-y divide-default">
         <ProjectListItem
-          v-for="project in utility"
+          v-for="project in utilityDotnet"
+          :key="project.repo"
+          :project="project"
+        />
+      </ul>
+
+      <SectionSubheading
+        heading-id="ts"
+        label="TS"
+        parent="utility-projects"
+      />
+      <ul class="border-y border-default divide-y divide-default">
+        <ProjectListItem
+          v-for="project in utilityTs"
           :key="project.repo"
           :project="project"
         />

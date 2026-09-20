@@ -7,19 +7,28 @@ const name = computed(() => projectName(props.project))
 const text = computed(() => projectText(props.project))
 const langIcon = computed(() => languageIcon(props.project.language))
 const isNew = computed(() => isNewProject(props.project))
+const link = computed(() => props.project.docsUrl ?? `https://github.com/${props.project.repo}`)
 </script>
 
 <template>
-  <article class="project-card relative flex flex-col border border-default bg-elevated p-5">
+  <article class="project-card relative isolate flex flex-col border border-default bg-elevated p-5">
     <div class="flex items-start justify-between gap-3">
-      <h3 class="font-mono text-base font-semibold text-highlighted">
-        <a
-          :href="`https://github.com/${project.repo}`"
-          target="_blank"
-          rel="noopener"
-          class="card-link"
-        >{{ name }}</a>
-      </h3>
+      <div class="flex min-w-0 items-center gap-3">
+        <img
+          v-if="project.logo"
+          :src="project.logo"
+          alt=""
+          class="h-8 w-auto max-w-16 rounded-[2px]"
+        >
+        <h3 class="font-mono text-base font-semibold text-highlighted">
+          <a
+            :href="link"
+            target="_blank"
+            rel="noopener"
+            class="card-link"
+          >{{ name }}</a>
+        </h3>
+      </div>
       <span
         v-if="isNew || project.archived"
         class="flex items-center gap-2"
@@ -63,13 +72,6 @@ const isNew = computed(() => isNewProject(props.project))
           class="size-3.5"
         />{{ formatCount(project.downloads) }}
       </a>
-      <a
-        v-if="project.docsUrl"
-        :href="project.docsUrl"
-        target="_blank"
-        rel="noopener"
-        class="relative z-10 text-(--ui-secondary) underline underline-offset-2"
-      >docs</a>
     </div>
   </article>
 </template>

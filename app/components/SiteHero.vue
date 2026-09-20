@@ -1,6 +1,15 @@
 <script setup lang="ts">
 const activeSection = useActiveSection()
 const isActive = computed(() => activeSection.value === 'whoami')
+
+const technologies = [
+  { label: 'C#', icon: 'i-simple-icons-csharp' },
+  { label: 'TS', icon: 'i-simple-icons-typescript' },
+  { label: 'Vue', icon: 'i-simple-icons-vuedotjs' },
+  { label: 'Postgres', icon: 'i-simple-icons-postgresql' },
+  { label: 'RabbitMQ', icon: 'i-simple-icons-rabbitmq' },
+  { label: 'AWS', icon: 'i-simple-icons-amazonwebservices' }
+]
 </script>
 
 <template>
@@ -15,17 +24,31 @@ const isActive = computed(() => activeSection.value === 'whoami')
       <span class="text-toned">whoami</span>
     </p>
     <h1 class="hero-name mt-4 w-fit font-mono text-6xl font-bold sm:text-7xl">
-      Hawxy<span
+      Jaedyn<span
         class="cursor"
         aria-hidden="true"
       >_</span>
     </h1>
     <p class="mt-6 max-w-xl text-lg text-toned">
-      I'm a C#, Vue.js &amp; AWS Architect. I maintain or contribute to a range
-      of projects, and assist in maintaining the JasperFx ecosystem.
+      C#, Vue.js & AWS Architect. Prolific .NET and TypeScript open source contributor. JasperFx Maintainer.
     </p>
+    <ul
+      class="mt-5 flex max-w-xl flex-wrap gap-x-5 gap-y-2"
+      aria-label="Technologies I work with"
+    >
+      <li
+        v-for="tech in technologies"
+        :key="tech.label"
+        class="flex items-center gap-1.5 font-mono text-xs text-muted"
+      >
+        <UIcon
+          :name="tech.icon"
+          class="size-4"
+        />{{ tech.label }}
+      </li>
+    </ul>
     <p class="mt-3 max-w-xl text-toned">
-      You can reach out via
+      You can reach me at
       <a
         href="mailto:software@hawx.dev"
         class="text-(--ui-primary) underline underline-offset-2"
@@ -41,6 +64,16 @@ const isActive = computed(() => activeSection.value === 'whoami')
         class="glow-button font-mono"
       >
         github.com/Hawxy
+      </UButton>
+      <UButton
+        to="https://www.linkedin.com/in/jaedyntonee/"
+        target="_blank"
+        icon="i-simple-icons-linkedin"
+        color="neutral"
+        variant="outline"
+        class="glow-button font-mono"
+      >
+        LinkedIn
       </UButton>
       <UButton
         to="https://github.com/sponsors/Hawxy"

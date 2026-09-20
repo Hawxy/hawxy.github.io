@@ -16,11 +16,13 @@ const activeSection = useActiveSection()
 const sectionPaths: Record<string, string> = {
   'major-projects': '.\\major-projects\\',
   'jasperfx': '.\\major-projects\\jasperfx\\',
-  'utility-projects': '.\\utility-projects\\'
+  'utility-projects': '.\\utility-projects\\',
+  'ts': '.\\utility-projects\\ts\\',
+  'dotnet': '.\\utility-projects\\dotnet\\'
 }
 
-const title = 'Hawxy'
-const description = 'C#, Vue.js & AWS Architect maintaining .NET and TypeScript open source, including the JasperFx ecosystem.'
+const title = 'Jaedyn.T'
+const description = 'C#, Vue.js & AWS Architect. Prolific .NET and TypeScript open source contributor. JasperFx Maintainer.'
 
 useSeoMeta({
   title,
@@ -46,6 +48,14 @@ useSeoMeta({
             target="_blank"
             icon="i-simple-icons-github"
             aria-label="GitHub profile"
+            color="neutral"
+            variant="ghost"
+          />
+          <UButton
+            to="https://www.linkedin.com/in/jaedyntonee/"
+            target="_blank"
+            icon="i-simple-icons-linkedin"
+            aria-label="LinkedIn profile"
             color="neutral"
             variant="ghost"
           />
