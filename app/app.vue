@@ -43,8 +43,11 @@ useSeoMeta({
           :key="activeSection"
           class="header-cmd font-normal"
         ><template v-if="activeSection === 'whoami'">{{ ' ' }}<span class="text-toned">whoami</span></template><template v-else>{{ ' ' }}<span class="text-dimmed">ls</span>{{ ' ' }}<span class="text-(--ui-primary)">{{ sectionPaths[activeSection] }}</span></template></span></span>
-        <div class="flex items-center gap-1">
-          <UColorModeButton />
+        <div class="flex items-center gap-0.5">
+          <UColorModeButton
+            class="size-8 justify-center"
+            :ui="{ leadingIcon: 'size-4' }"
+          />
           <UButton
             to="https://github.com/Hawxy"
             target="_blank"
@@ -52,6 +55,8 @@ useSeoMeta({
             aria-label="GitHub profile"
             color="neutral"
             variant="ghost"
+            class="size-8 justify-center"
+            :ui="{ leadingIcon: 'size-4' }"
           />
           <UButton
             to="https://www.linkedin.com/in/jaedyntonee/"
@@ -60,6 +65,8 @@ useSeoMeta({
             aria-label="LinkedIn profile"
             color="neutral"
             variant="ghost"
+            class="size-8 justify-center"
+            :ui="{ leadingIcon: 'size-4' }"
           />
         </div>
       </div>

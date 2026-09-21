@@ -54,14 +54,15 @@ const technologies = [
         class="text-(--ui-primary) underline underline-offset-2"
       >software@hawx.dev</a>.
     </p>
-    <div class="mt-8 flex flex-wrap gap-3">
+    <div class="mt-8 flex flex-wrap gap-2.5">
       <UButton
         to="https://github.com/Hawxy"
         target="_blank"
         icon="i-simple-icons-github"
         color="neutral"
         variant="outline"
-        class="glow-button font-mono"
+        class="glow-button h-9 gap-2.5 px-3.5 font-mono"
+        :ui="{ leadingIcon: 'size-4' }"
       >
         github.com/Hawxy
       </UButton>
@@ -71,7 +72,8 @@ const technologies = [
         icon="i-simple-icons-linkedin"
         color="neutral"
         variant="outline"
-        class="glow-button font-mono"
+        class="glow-button h-9 gap-2.5 px-3.5 font-mono"
+        :ui="{ leadingIcon: 'size-4' }"
       >
         LinkedIn
       </UButton>
@@ -81,7 +83,8 @@ const technologies = [
         icon="i-lucide-heart"
         color="neutral"
         variant="outline"
-        class="glow-button-secondary font-mono"
+        class="glow-button-secondary h-9 gap-2.5 px-3.5 font-mono"
+        :ui="{ leadingIcon: 'size-4' }"
       >
         Sponsor
       </UButton>
