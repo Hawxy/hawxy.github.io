@@ -13,19 +13,17 @@ const technologies = [
 </script>
 
 <template>
-  <section class="hero relative py-20 sm:py-28">
-    <p
+  <section class="blueprint-grid relative py-20 sm:py-28">
+    <TerminalPrompt
       id="whoami"
-      class="font-mono text-sm transition-opacity duration-500"
+      class="transition-opacity duration-500"
       :style="{ opacity: isActive ? 0.25 : 1 }"
     >
-      <span class="text-(--ui-secondary)">PS</span>{{ ' ' }}
-      <span class="text-dimmed">C:\Users\hawxy&gt;</span>{{ ' ' }}
-      <span class="text-toned">whoami</span>
-    </p>
-    <h1 class="hero-name mt-4 w-fit font-mono text-6xl font-bold sm:text-7xl">
+      whoami
+    </TerminalPrompt>
+    <h1 class="glow-title mt-4 w-fit font-mono text-6xl font-bold sm:text-7xl">
       Jaedyn<span
-        class="cursor"
+        class="blink-cursor"
         aria-hidden="true"
       >_</span>
     </h1>
@@ -93,41 +91,6 @@ const technologies = [
 </template>
 
 <style scoped>
-.hero-name {
-  color: var(--ui-primary);
-  text-shadow: var(--text-glow-primary);
-}
-
-.cursor {
-  margin-left: 0.08em;
-  animation: blink 1.1s steps(1) infinite;
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .cursor {
-    animation: none;
-  }
-}
-
-/* Blueprint grid, faded toward the bottom */
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background-image:
-    repeating-linear-gradient(to right, var(--ui-border) 0 1px, transparent 1px 48px),
-    repeating-linear-gradient(to bottom, var(--ui-border) 0 1px, transparent 1px 48px);
-  opacity: 0.25;
-  mask-image: linear-gradient(to bottom, black 20%, transparent);
-}
-
 .glow-button,
 .glow-button-secondary {
   transition: border-color 0.25s, box-shadow 0.25s;

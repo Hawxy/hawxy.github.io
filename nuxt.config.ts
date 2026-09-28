@@ -2,7 +2,8 @@
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
-    '@nuxt/ui'
+    '@nuxt/ui',
+    '@nuxt/content'
   ],
 
   devtools: {
@@ -11,11 +12,39 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  content: {
+    build: {
+      markdown: {
+        highlight: {
+          theme: {
+            default: 'github-light',
+            dark: 'poimandres'
+          },
+          langs: ['csharp', 'ts', 'js', 'vue', 'json', 'yaml', 'sql', 'powershell', 'bash', 'xml', 'diff']
+        }
+      }
+    },
+    experimental: {
+      sqliteConnector: 'native'
+    }
+  },
+
   routeRules: {
-    '/': { prerender: true }
+    '/': { prerender: true },
+    '/blog/**': { prerender: true },
+    '/rss.xml': { prerender: true }
   },
 
   compatibilityDate: '2026-06-30',
+
+  hooks: {
+    // Reading time from the raw markdown at ~220 words per minute
+    'content:file:afterParse'({ file, content, collection }) {
+      if (collection.name !== 'blog') return
+      const words = file.body.replace(/^---[\s\S]*?---/, '').split(/\s+/).filter(Boolean).length
+      content.readingTime = Math.max(1, Math.round(words / 220))
+    }
+  },
 
   eslint: {
     config: {
