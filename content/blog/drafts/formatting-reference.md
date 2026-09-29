@@ -57,7 +57,38 @@ Get-ChildItem .\content\blog\ -Filter *.md | Select-Object Name, LastWriteTime
 > A blockquote, for citing someone else's words.
 
 ::note
-A callout, written with the `::note` block syntax. `::tip`, `::warning` and `::caution` also work.
+A callout, written with the `::note` block syntax. [Links](https://nuxt.com) take the callout's colour.
+::
+
+::tip
+A `::tip` callout.
+::
+
+::warning
+A `::warning` callout.
+::
+
+::caution
+A `::caution` callout.
+::
+
+## Pros and cons
+
+```md
+::pros-cons
+#pros
+- Something good
+#cons
+- Something bad
+::
+```
+
+::pros-cons
+#pros
+- A strength, with `inline code`
+- Another strength
+#cons
+- A trade-off worth knowing about
 ::
 
 ## Tables

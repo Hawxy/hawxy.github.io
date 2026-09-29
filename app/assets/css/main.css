@@ -65,6 +65,11 @@
 
   --ui-primary: var(--ui-color-primary-700);
   --ui-secondary: var(--ui-color-secondary-700);
+  /* Callout links use these directly, so they need AA contrast as text */
+  --ui-info: var(--ui-color-info-700);
+  --ui-success: var(--ui-color-success-700);
+  --ui-warning: var(--ui-color-warning-700);
+  --ui-error: var(--ui-color-error-700);
 
   /* Two-layer neon glow: tight halo + wide bloom, hover/focus only */
   --glow-primary: 0 0 4px rgba(14, 143, 148, 0.5), 0 0 18px rgba(14, 143, 148, 0.28);
@@ -95,6 +100,10 @@
 
   --ui-primary: var(--ui-color-primary-400);
   --ui-secondary: var(--ui-color-secondary-400);
+  --ui-info: var(--ui-color-info-400);
+  --ui-success: var(--ui-color-success-400);
+  --ui-warning: var(--ui-color-warning-400);
+  --ui-error: var(--ui-color-error-400);
 
   --glow-primary: 0 0 5px rgba(77, 224, 220, 0.6), 0 0 20px rgba(77, 224, 220, 0.35);
   --glow-secondary: 0 0 5px rgba(177, 138, 255, 0.6), 0 0 20px rgba(177, 138, 255, 0.35);

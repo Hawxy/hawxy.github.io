@@ -29,6 +29,17 @@ export default defineAppConfig({
       },
       blockquote: {
         base: 'border-s-2 border-primary text-toned not-italic'
+      },
+      // Darker than the default so light-mode callout text keeps AA contrast on its tint
+      callout: {
+        variants: {
+          color: {
+            info: { base: 'text-info-700 [&_code]:text-info-700' },
+            success: { base: 'text-success-800 [&_code]:text-success-800' },
+            warning: { base: 'text-warning-800 [&_code]:text-warning-800' },
+            error: { base: 'text-error-700 [&_code]:text-error-700' }
+          }
+        }
       }
     }
   }

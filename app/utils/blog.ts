@@ -20,3 +20,15 @@ export function isDraftPost(path: string): boolean {
 export function formatTags(tags: string[] = []): string {
   return tags.map(tag => `#${tag}`).join(' ')
 }
+
+export interface TocLink {
+  id: string
+  text: string
+  depth: number
+  children?: TocLink[]
+}
+
+// Post headings in reading order, with h3s following their h2
+export function flattenToc(links: TocLink[]): TocLink[] {
+  return links.flatMap(link => [link, ...(link.children ?? [])])
+}

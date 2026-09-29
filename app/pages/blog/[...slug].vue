@@ -19,6 +19,8 @@ const { data: surround } = await useAsyncData(`blog-surround-${path}`, () =>
 const newer = computed(() => surround.value?.[0])
 const older = computed(() => surround.value?.[1])
 
+const tocLinks = computed(() => post.value?.body.toc?.links ?? [])
+
 const promptPath = blogPromptPath(path)
 
 const activeSection = useActiveSection()
@@ -35,10 +37,10 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="mx-auto max-w-4xl px-6">
+  <div class="mx-auto max-w-4xl px-6 lg:grid lg:grid-cols-[minmax(0,42rem)_1fr] lg:gap-8">
     <article
       v-if="post"
-      class="max-w-2xl pt-20 pb-16 sm:pt-28 sm:pb-20"
+      class="min-w-0 max-w-2xl pt-20 pb-16 sm:pt-28 sm:pb-20"
     >
       <header>
         <TerminalPrompt
@@ -72,6 +74,12 @@ useSeoMeta({
       <div
         class="my-10 h-px bg-(--ui-border)"
         aria-hidden="true"
+      />
+
+      <PostTocMenu
+        v-if="tocLinks.length > 1"
+        :links="tocLinks"
+        class="-mt-2 mb-10 lg:hidden"
       />
 
       <ContentRenderer :value="post" />
@@ -109,6 +117,17 @@ useSeoMeta({
         </NuxtLink>
       </nav>
     </article>
+
+    <!-- Top padding matches the article so the ToC lines up with the prompt -->
+    <aside
+      v-if="tocLinks.length > 1"
+      class="hidden pt-28 lg:block"
+    >
+      <PostToc
+        :links="tocLinks"
+        class="sticky top-[calc(var(--ui-header-height)+2rem)] max-h-[calc(100dvh-var(--ui-header-height)-4rem)] overflow-y-auto"
+      />
+    </aside>
   </div>
 </template>
 
