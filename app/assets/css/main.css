@@ -70,9 +70,10 @@
   --glow-primary: 0 0 4px rgba(14, 143, 148, 0.5), 0 0 18px rgba(14, 143, 148, 0.28);
   --glow-secondary: 0 0 4px rgba(124, 58, 237, 0.5), 0 0 18px rgba(124, 58, 237, 0.28);
 
-  /* Phosphor text glow (always on, display text only) and CRT scanline tint */
+  /* Phosphor text glow (always on, display text only) */
   --text-glow-primary: 0 0 6px rgba(14, 143, 148, 0.4), 0 0 24px rgba(14, 143, 148, 0.2);
-  --scanline: rgba(21, 24, 30, 0.02);
+  /* Scanlines drawn in the page colour, so they only show where they cross a glyph */
+  --scanline: color-mix(in srgb, var(--ui-bg) 45%, transparent);
 }
 
 /* Dark theme: near-black, text softened to ~14:1 to avoid halation, hotter glows */
@@ -99,7 +100,11 @@
   --glow-secondary: 0 0 5px rgba(177, 138, 255, 0.6), 0 0 20px rgba(177, 138, 255, 0.35);
 
   --text-glow-primary: 0 0 7px rgba(77, 224, 220, 0.55), 0 0 28px rgba(77, 224, 220, 0.3);
-  --scanline: rgba(0, 0, 0, 0.09);
+}
+
+/* Reserve the scrollbar's space so centred content doesn't shift between short and long pages */
+html {
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -113,16 +118,6 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100dvh;
-}
-
-/* CRT scanlines over the whole viewport */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 50;
-  pointer-events: none;
-  background: repeating-linear-gradient(to bottom, var(--scanline) 0 1px, transparent 1px 4px);
 }
 
 ::selection {
@@ -156,10 +151,19 @@ button:not(:disabled),
   background: var(--ui-primary);
 }
 
-/* Glowing page title */
+/* Glowing page title with CRT scanlines */
 .glow-title {
+  position: relative;
   color: var(--ui-primary);
   text-shadow: var(--text-glow-primary);
+}
+
+.glow-title::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(to bottom, var(--scanline) 0 1px, transparent 1px 4px);
 }
 
 /* Blinking underscore cursor after a title */

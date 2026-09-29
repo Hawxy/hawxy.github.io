@@ -19,7 +19,10 @@ const { data: surround } = await useAsyncData(`blog-surround-${path}`, () =>
 const newer = computed(() => surround.value?.[0])
 const older = computed(() => surround.value?.[1])
 
-const promptPath = `C:\\Users\\hawxy${path.slice(0, path.lastIndexOf('/')).replaceAll('/', '\\')}`
+const promptPath = blogPromptPath(path)
+
+const activeSection = useActiveSection()
+useScrollSpy(['post-prompt'])
 
 useSeoMeta({
   title: post.value.title,
@@ -35,10 +38,15 @@ useSeoMeta({
   <div class="mx-auto max-w-4xl px-6">
     <article
       v-if="post"
-      class="max-w-2xl pt-20 pb-16 sm:pt-24 sm:pb-20"
+      class="max-w-2xl pt-20 pb-16 sm:pt-28 sm:pb-20"
     >
       <header>
-        <TerminalPrompt :path="promptPath">
+        <TerminalPrompt
+          id="post-prompt"
+          :path="promptPath"
+          class="transition-opacity duration-500"
+          :style="{ opacity: activeSection === 'post-prompt' ? 0.25 : 1 }"
+        >
           Get-Content .\{{ postSlug(post.path) }}.md
         </TerminalPrompt>
         <h1 class="mt-4 font-mono text-3xl font-bold text-balance text-highlighted sm:text-4xl">

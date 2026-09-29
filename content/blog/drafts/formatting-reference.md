@@ -41,6 +41,7 @@ app.Run();
 ```
 
 ```ts
+// Abbreviates large counts, e.g. 18693117 becomes 18.7M
 export function formatCount(count: number): string {
   if (count >= 1_000_000) return `${(count / 1_000_000).toFixed(1)}M`
   return String(count)

@@ -42,9 +42,14 @@ export function languageIcon(language: string | null): string | null {
   }
 }
 
+// One decimal place, dropped when it's zero (20.0M -> 20M)
+function oneDecimal(value: number): string {
+  return value.toFixed(1).replace(/\.0$/, '')
+}
+
 export function formatCount(count: number): string {
-  if (count >= 1_000_000) return `${(count / 1_000_000).toFixed(1)}M`
+  if (count >= 1_000_000) return `${oneDecimal(count / 1_000_000)}M`
   if (count >= 10_000) return `${Math.round(count / 1_000)}k`
-  if (count >= 1_000) return `${(count / 1_000).toFixed(1)}k`
+  if (count >= 1_000) return `${oneDecimal(count / 1_000)}k`
   return String(count)
 }

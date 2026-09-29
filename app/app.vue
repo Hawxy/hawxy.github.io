@@ -26,7 +26,7 @@ useSeoMeta({
 
 const route = useRoute()
 const isBlog = computed(() => route.path.startsWith('/blog'))
-const promptPath = computed(() => isBlog.value ? 'C:\\Users\\hawxy\\blog' : 'C:\\Users\\hawxy')
+const promptPath = computed(() => isBlog.value ? blogPromptPath(route.path) : 'C:\\Users\\hawxy')
 
 const navLinks = computed(() => [
   { label: 'home', to: '/', active: !isBlog.value },
@@ -42,6 +42,18 @@ const sectionPaths: Record<string, string> = {
   'ts': '.\\utility-projects\\ts\\',
   'dotnet': '.\\utility-projects\\dotnet\\'
 }
+
+// Command typed into the title bar for the heading currently scrolled under it
+const headerCommand = computed<{ verb: string, arg?: string } | null>(() => {
+  const section = activeSection.value
+  if (!section) return null
+  if (section === 'whoami') return { verb: 'whoami' }
+  if (section === 'post-prompt') {
+    return { verb: 'Get-Content', arg: `.\\${postSlug(route.path.replace(/\/+$/, ''))}.md` }
+  }
+  const path = sectionPaths[section]
+  return path ? { verb: 'ls', arg: path } : null
+})
 </script>
 
 <template>
@@ -49,10 +61,10 @@ const sectionPaths: Record<string, string> = {
     <header class="sticky top-0 z-10 border-b border-default bg-default/80 backdrop-blur">
       <div class="mx-auto flex max-w-4xl items-center justify-between gap-4 px-6 py-3">
         <span class="min-w-0 truncate font-mono text-sm font-semibold text-highlighted"><span class="font-normal text-dimmed">PS</span> {{ promptPath }}<span class="font-normal text-dimmed">&gt;</span><span
-          v-if="activeSection"
-          :key="activeSection"
+          v-if="headerCommand"
+          :key="activeSection ?? undefined"
           class="header-cmd font-normal"
-        ><template v-if="activeSection === 'whoami'">{{ ' ' }}<span class="text-toned">whoami</span></template><template v-else>{{ ' ' }}<span class="text-dimmed">ls</span>{{ ' ' }}<span class="text-(--ui-primary)">{{ sectionPaths[activeSection] }}</span></template></span></span>
+        >{{ ' ' }}<span :class="headerCommand.arg ? 'text-dimmed' : 'text-toned'">{{ headerCommand.verb }}</span><template v-if="headerCommand.arg">{{ ' ' }}<span class="text-(--ui-primary)">{{ headerCommand.arg }}</span></template></span></span>
         <div class="flex shrink-0 items-center gap-0.5">
           <nav
             aria-label="Site"

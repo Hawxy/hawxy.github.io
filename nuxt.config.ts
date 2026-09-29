@@ -16,9 +16,12 @@ export default defineNuxtConfig({
     build: {
       markdown: {
         highlight: {
+          // All three keys are set so none of Nuxt UI's default themes merge in.
+          // Both themes keep every token at WCAG AA contrast on the elevated code block surface.
           theme: {
-            default: 'github-light',
-            dark: 'poimandres'
+            default: 'github-light-high-contrast',
+            light: 'github-light-high-contrast',
+            dark: 'catppuccin-mocha'
           },
           langs: ['csharp', 'ts', 'js', 'vue', 'json', 'yaml', 'sql', 'powershell', 'bash', 'xml', 'diff']
         }

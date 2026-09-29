@@ -22,7 +22,7 @@ const technologies = [
       whoami
     </TerminalPrompt>
     <h1 class="glow-title mt-4 w-fit font-mono text-6xl font-bold sm:text-7xl">
-      Jaedyn<span
+      Jaedyn Tonee<span
         class="blink-cursor"
         aria-hidden="true"
       >_</span>

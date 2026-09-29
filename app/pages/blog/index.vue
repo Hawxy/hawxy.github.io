@@ -16,7 +16,7 @@ useSeoMeta({
 
 <template>
   <div class="mx-auto max-w-4xl px-6">
-    <section class="blueprint-grid relative pt-20 pb-12 sm:pt-24">
+    <section class="blueprint-grid relative pt-20 pb-12 sm:pt-28">
       <TerminalPrompt>cd .\blog\</TerminalPrompt>
       <h1 class="glow-title mt-4 w-fit font-mono text-5xl font-bold sm:text-6xl">
         Blog<span
