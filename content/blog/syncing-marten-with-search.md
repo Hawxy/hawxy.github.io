@@ -341,7 +341,7 @@ Deletes come through as delete events, so there's no separate code path for them
 #cons
 - Needs logical replication enabled (`wal_level = logical`).
 - WAL consumes resources and requires monitoring
-- Additional dependency
+- Additional worker service deployment
 ::
 
 ## Which one should you use?
@@ -352,7 +352,8 @@ Deletes come through as delete events, so there's no separate code path for them
 | Catches every write path | No | No | Events only | No | Yes |
 | Built-in backfill | No | No | Replay | No | Yes |
 | Requires event sourcing | No | No | Yes | No | No |
-| Extra infrastructure | None | None | Async daemon | Wolverine | Replication slot |
+| Extra infrastructure | None | None | None | Dependency | Worker |
 
-If your data is already event sourced, then a subscription within the async daemon for one or two indexes makes a lot of sense. 
-For Marten documents or more complex scenarios then [Wallaby](https://wallabycdc.net) is likely the most robust solution for your requirements.
+If your data is already event sourced, then a subscription within the async daemon for one or two indexes makes a lot of sense. I'd recommend starting here if you can.
+
+For Marten documents or more complex scenarios [Wallaby](https://wallabycdc.net) is likely the most robust solution for your requirements.
