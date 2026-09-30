@@ -1,17 +1,33 @@
 <script setup lang="ts">
 useHead({
+  titleTemplate: chunk => chunk && chunk !== siteName ? `${chunk} · ${siteName}` : siteName,
   meta: [
     { name: 'viewport', content: 'width=device-width, initial-scale=1' }
   ],
   link: [
     { rel: 'icon', href: '/favicon.ico', sizes: '32x32' },
     { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
-    { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' }
+    { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+    { rel: 'alternate', type: 'application/rss+xml', title: `${siteName} blog`, href: '/rss.xml' }
   ],
   htmlAttrs: {
     lang: 'en'
   }
 })
+
+useSeoMeta({
+  title: siteName,
+  description: siteDescription
+})
+
+const route = useRoute()
+const isBlog = computed(() => route.path.startsWith('/blog'))
+const promptPath = computed(() => isBlog.value ? blogPromptPath(route.path) : 'C:\\Users\\hawxy')
+
+const navLinks = computed(() => [
+  { label: 'home', to: '/', active: !isBlog.value },
+  { label: 'blog', to: '/blog', active: isBlog.value }
+])
 
 const activeSection = useActiveSection()
 
@@ -23,33 +39,50 @@ const sectionPaths: Record<string, string> = {
   'dotnet': '.\\utility-projects\\dotnet\\'
 }
 
-const title = 'Jaedyn.T'
-const description = 'C#, Vue.js & AWS Architect. Prolific .NET and TypeScript open source contributor. JasperFx Maintainer.'
-
-useSeoMeta({
-  title,
-  description,
-  ogTitle: title,
-  ogDescription: description
+// Command typed into the title bar for the heading currently scrolled under it
+const headerCommand = computed<{ verb: string, arg?: string } | null>(() => {
+  const section = activeSection.value
+  if (!section) return null
+  if (section === 'whoami') return { verb: 'whoami' }
+  if (section === 'post-prompt') {
+    return { verb: 'Get-Content', arg: `.\\${postSlug(route.path.replace(/\/+$/, ''))}.md` }
+  }
+  const path = sectionPaths[section]
+  return path ? { verb: 'ls', arg: path } : null
 })
 </script>
 
 <template>
   <UApp>
     <header class="sticky top-0 z-10 border-b border-default bg-default/80 backdrop-blur">
-      <div class="mx-auto flex max-w-4xl items-center justify-between px-6 py-3">
-        <span class="min-w-0 truncate font-mono text-sm font-semibold text-highlighted"><span class="font-normal text-dimmed">PS</span> C:\Users\hawxy<span class="font-normal text-dimmed">&gt;</span><span
-          v-if="activeSection"
-          :key="activeSection"
+      <div class="mx-auto flex max-w-4xl items-center justify-between gap-4 px-6 py-3">
+        <span class="min-w-0 truncate font-mono text-sm font-semibold text-highlighted"><span class="font-normal text-dimmed">PS</span> {{ promptPath }}<span class="font-normal text-dimmed">&gt;</span><span
+          v-if="headerCommand"
+          :key="activeSection ?? undefined"
           class="header-cmd font-normal"
-        ><template v-if="activeSection === 'whoami'">{{ ' ' }}<span class="text-toned">whoami</span></template><template v-else>{{ ' ' }}<span class="text-dimmed">ls</span>{{ ' ' }}<span class="text-(--ui-primary)">{{ sectionPaths[activeSection] }}</span></template></span></span>
-        <div class="flex items-center gap-0.5">
+        >{{ ' ' }}<span :class="headerCommand.arg ? 'text-dimmed' : 'text-toned'">{{ headerCommand.verb }}</span><template v-if="headerCommand.arg">{{ ' ' }}<span class="text-(--ui-primary)">{{ headerCommand.arg }}</span></template></span></span>
+        <div class="flex shrink-0 items-center gap-0.5">
+          <nav
+            aria-label="Site"
+            class="mr-3 flex items-center gap-4 font-mono text-sm"
+          >
+            <NuxtLink
+              v-for="link in navLinks"
+              :key="link.to"
+              :to="link.to"
+              :aria-current="link.active ? 'page' : undefined"
+              class="transition-colors hover:text-(--ui-primary)"
+              :class="link.active ? 'text-(--ui-primary)' : 'text-muted'"
+            >
+              {{ link.label }}
+            </NuxtLink>
+          </nav>
           <UColorModeButton
             class="size-8 justify-center"
             :ui="{ leadingIcon: 'size-4' }"
           />
           <UButton
-            to="https://github.com/Hawxy"
+            :to="githubUrl"
             target="_blank"
             icon="i-simple-icons-github"
             aria-label="GitHub profile"
@@ -59,7 +92,7 @@ useSeoMeta({
             :ui="{ leadingIcon: 'size-4' }"
           />
           <UButton
-            to="https://www.linkedin.com/in/jaedyntonee/"
+            :to="linkedinUrl"
             target="_blank"
             icon="i-simple-icons-linkedin"
             aria-label="LinkedIn profile"
@@ -72,7 +105,7 @@ useSeoMeta({
       </div>
     </header>
 
-    <main>
+    <main class="flex-1">
       <NuxtPage />
     </main>
 

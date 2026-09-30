@@ -5,29 +5,11 @@ const utility = allProjects.filter(p => p.section === 'utility')
 const utilityTs = utility.filter(p => p.language === 'TypeScript')
 const utilityDotnet = utility.filter(p => p.language !== 'TypeScript')
 
-const activeSection = useActiveSection()
-const sectionIds = ['whoami', 'major-projects', 'jasperfx', 'utility-projects', 'dotnet', 'ts']
+useScrollSpy(['whoami', 'major-projects', 'jasperfx', 'utility-projects', 'dotnet', 'ts'])
 
-function updateActiveSection() {
-  const headerHeight = document.querySelector('header')?.getBoundingClientRect().height ?? 56
-  let active: string | null = null
-  for (const id of sectionIds) {
-    const heading = document.getElementById(id)
-    if (heading && heading.getBoundingClientRect().top <= headerHeight) {
-      active = id
-    }
-  }
-  activeSection.value = active
-}
-
-onMounted(() => {
-  window.addEventListener('scroll', updateActiveSection, { passive: true })
-  updateActiveSection()
-})
-
-onBeforeUnmount(() => {
-  window.removeEventListener('scroll', updateActiveSection)
-  activeSection.value = null
+defineOgImage('Terminal.takumi', {
+  title: siteAuthor,
+  description: siteDescription
 })
 </script>
 

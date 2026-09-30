@@ -1,16 +1,6 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
-/* Berkeley Mono: licensed font, injected into public/fonts/ (gitignored).
-   Lives in public/ so a missing file degrades to the fallback stack instead of failing the build. */
-@font-face {
-  font-family: 'Berkeley Mono';
-  src: url('/fonts/BerkeleyMonoVariable.woff2') format('woff2-variations');
-  font-weight: 400 700;
-  font-style: normal;
-  font-display: swap;
-}
-
 @theme static {
   --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
   --font-mono: 'Berkeley Mono', ui-monospace, 'Cascadia Code', Consolas, 'Liberation Mono', monospace;
@@ -45,6 +35,8 @@
 /* Light theme: CRT glass, cool whites, accents at daylight voltage */
 :root {
   --ui-radius: 2px;
+  /* Sticky header height, used as scroll-margin for prose heading anchors */
+  --ui-header-height: 57px;
 
   --ui-bg: #f3f5f8;
   --ui-bg-muted: #e8ecf1;
@@ -63,14 +55,20 @@
 
   --ui-primary: var(--ui-color-primary-700);
   --ui-secondary: var(--ui-color-secondary-700);
+  /* Callout links use these directly, so they need AA contrast as text */
+  --ui-info: var(--ui-color-info-700);
+  --ui-success: var(--ui-color-success-700);
+  --ui-warning: var(--ui-color-warning-700);
+  --ui-error: var(--ui-color-error-700);
 
   /* Two-layer neon glow: tight halo + wide bloom, hover/focus only */
   --glow-primary: 0 0 4px rgba(14, 143, 148, 0.5), 0 0 18px rgba(14, 143, 148, 0.28);
   --glow-secondary: 0 0 4px rgba(124, 58, 237, 0.5), 0 0 18px rgba(124, 58, 237, 0.28);
 
-  /* Phosphor text glow (always on, display text only) and CRT scanline tint */
+  /* Phosphor text glow (always on, display text only) */
   --text-glow-primary: 0 0 6px rgba(14, 143, 148, 0.4), 0 0 24px rgba(14, 143, 148, 0.2);
-  --scanline: rgba(21, 24, 30, 0.02);
+  /* Scanlines drawn in the page colour, so they only show where they cross a glyph */
+  --scanline: color-mix(in srgb, var(--ui-bg) 45%, transparent);
 }
 
 /* Dark theme: near-black, text softened to ~14:1 to avoid halation, hotter glows */
@@ -92,12 +90,20 @@
 
   --ui-primary: var(--ui-color-primary-400);
   --ui-secondary: var(--ui-color-secondary-400);
+  --ui-info: var(--ui-color-info-400);
+  --ui-success: var(--ui-color-success-400);
+  --ui-warning: var(--ui-color-warning-400);
+  --ui-error: var(--ui-color-error-400);
 
   --glow-primary: 0 0 5px rgba(77, 224, 220, 0.6), 0 0 20px rgba(77, 224, 220, 0.35);
   --glow-secondary: 0 0 5px rgba(177, 138, 255, 0.6), 0 0 20px rgba(177, 138, 255, 0.35);
 
   --text-glow-primary: 0 0 7px rgba(77, 224, 220, 0.55), 0 0 28px rgba(77, 224, 220, 0.3);
-  --scanline: rgba(0, 0, 0, 0.09);
+}
+
+/* Reserve the scrollbar's space so centred content doesn't shift between short and long pages */
+html {
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -106,14 +112,11 @@ body {
   font-family: var(--font-sans);
 }
 
-/* CRT scanlines over the whole viewport */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 50;
-  pointer-events: none;
-  background: repeating-linear-gradient(to bottom, var(--scanline) 0 1px, transparent 1px 4px);
+/* Full-height column so the footer sits at the bottom of short pages */
+#__nuxt {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
 }
 
 ::selection {
@@ -147,11 +150,55 @@ button:not(:disabled),
   background: var(--ui-primary);
 }
 
+/* Glowing page title with CRT scanlines */
+.glow-title {
+  position: relative;
+  color: var(--ui-primary);
+  text-shadow: var(--text-glow-primary);
+}
+
+.glow-title::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(to bottom, var(--scanline) 0 1px, transparent 1px 4px);
+}
+
+/* Blinking underscore cursor after a title */
+.blink-cursor {
+  margin-left: 0.08em;
+  animation: blink 1.1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Blueprint grid behind a page hero, faded toward the bottom */
+.blueprint-grid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    repeating-linear-gradient(to right, var(--ui-border) 0 1px, transparent 1px 48px),
+    repeating-linear-gradient(to bottom, var(--ui-border) 0 1px, transparent 1px 48px);
+  opacity: 0.25;
+  mask-image: linear-gradient(to bottom, black 20%, transparent);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
+  }
+
+  .blink-cursor {
+    animation: none;
   }
 }
