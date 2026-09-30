@@ -29,11 +29,27 @@ useScrollSpy(['post-prompt'])
 useSeoMeta({
   title: post.value.title,
   description: post.value.description,
-  ogTitle: post.value.title,
-  ogDescription: post.value.description,
   ogType: 'article',
   articlePublishedTime: formatDate(post.value.date)
 })
+
+defineOgImage('Terminal.takumi', {
+  command: 'Get-Content',
+  argument: `.\\${postSlug(post.value.path)}.md`,
+  title: post.value.title,
+  description: post.value.description,
+  meta: `${formatDate(post.value.date)} · ${post.value.readingTime} min read`
+})
+
+useSchemaOrg([
+  defineArticle({
+    '@type': 'BlogPosting',
+    'headline': post.value.title,
+    'description': post.value.description,
+    'datePublished': formatDate(post.value.date),
+    'keywords': post.value.tags
+  })
+])
 </script>
 
 <template>

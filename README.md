@@ -4,12 +4,12 @@ Personal portfolio, built with [Nuxt](https://nuxt.com) + [Nuxt UI](https://ui.n
 
 ## Writing blog posts
 
-Posts are markdown files in `content/blog/`, rendered with [Nuxt Content](https://content.nuxt.com). The file name becomes the URL, so `content/blog/my-post.md` is served at `/blog/my-post`.
+Posts are markdown files in `content/blog/`, rendered with [Nuxt Content](https://content.nuxt.com). The file name becomes the URL, so `content/blog/my-post.md` is served at `/blog/my-post/`.
 
 ```md
 ---
 title: My post
-description: One-line summary, shown in the listing and RSS feed.
+description: One-line summary, shown in the listing, RSS feed and share card.
 date: 2026-09-28
 tags: [dotnet, marten]
 ---
@@ -17,7 +17,7 @@ tags: [dotnet, marten]
 Body text. Use `##` and `###` for headings; the title comes from frontmatter.
 ```
 
-Reading time is calculated automatically. Code blocks accept a filename (` ```csharp [Program.cs] `), and callouts use `::note`, `::tip`, `::warning` or `::caution`.
+Reading time, the sitemap entry, article structured data and a social share image (`app/components/OgImage/Terminal.takumi.vue`) are all generated from the frontmatter. Code blocks accept a filename (` ```csharp [Program.cs] `), and callouts use `::note`, `::tip`, `::warning` or `::caution`.
 
 ### Drafts
 

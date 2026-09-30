@@ -6,6 +6,11 @@ const utilityTs = utility.filter(p => p.language === 'TypeScript')
 const utilityDotnet = utility.filter(p => p.language !== 'TypeScript')
 
 useScrollSpy(['whoami', 'major-projects', 'jasperfx', 'utility-projects', 'dotnet', 'ts'])
+
+defineOgImage('Terminal.takumi', {
+  title: siteAuthor,
+  description: siteDescription
+})
 </script>
 
 <template>

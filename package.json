@@ -17,6 +17,8 @@
     "@iconify-json/simple-icons": "^1.2.96",
     "@nuxt/content": "^3.16.1",
     "@nuxt/ui": "^4.11.1",
+    "@nuxtjs/seo": "5.3.16",
+    "@takumi-rs/core": "^2.14.0",
     "nuxt": "^4.5.2",
     "tailwindcss": "^4.3.3"
   },

@@ -20,8 +20,8 @@ export default defineEventHandler(async (event) => {
   const items = posts.map(post => [
     '    <item>',
     `      <title>${escapeXml(post.title)}</title>`,
-    `      <link>${siteUrl}${post.path}</link>`,
-    `      <guid isPermaLink="true">${siteUrl}${post.path}</guid>`,
+    `      <link>${siteUrl}${post.path}/</link>`,
+    `      <guid isPermaLink="true">${siteUrl}${post.path}/</guid>`,
     `      <pubDate>${new Date(post.date).toUTCString()}</pubDate>`,
     `      <description>${escapeXml(post.description ?? '')}</description>`,
     '    </item>'
@@ -34,7 +34,7 @@ export default defineEventHandler(async (event) => {
     '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">',
     '  <channel>',
     `    <title>${escapeXml(siteName)}</title>`,
-    `    <link>${siteUrl}/blog</link>`,
+    `    <link>${siteUrl}/blog/</link>`,
     `    <description>${escapeXml(blogDescription)}</description>`,
     '    <language>en</language>',
     `    <atom:link href="${siteUrl}/rss.xml" rel="self" type="application/rss+xml" />`,

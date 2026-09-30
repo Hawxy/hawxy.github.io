@@ -54,7 +54,7 @@ const technologies = [
     </p>
     <div class="mt-8 flex flex-wrap gap-2.5">
       <UButton
-        to="https://github.com/Hawxy"
+        :to="githubUrl"
         target="_blank"
         icon="i-simple-icons-github"
         color="neutral"
@@ -65,7 +65,7 @@ const technologies = [
         github.com/Hawxy
       </UButton>
       <UButton
-        to="https://www.linkedin.com/in/jaedyntonee/"
+        :to="linkedinUrl"
         target="_blank"
         icon="i-simple-icons-linkedin"
         color="neutral"

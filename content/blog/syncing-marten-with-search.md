@@ -5,7 +5,7 @@ date: 2026-09-29
 tags: [marten, postgres, search, dotnet]
 ---
 
-Marten is great at storing documents, but sooner or later someone wants full-text search with typo tolerance or faceting, and you reach for a dedicated engine like Meilisearch, Elasticsearch or OpenSearch. Querying the index is easy, but ensuring your index is kept up to date is now.
+Marten is great at storing documents, but sooner or later someone wants full-text search with typo tolerance or faceting. You'll likely reach for a dedicated engine like Meilisearch, Elasticsearch or OpenSearch. Querying the index is easy, but ensuring your index is kept up to date is not.
 
 This post walks through five ways to do that, with the pros and cons laid out. Every example indexes the same `Order` document into a Meilisearch `orders` index, enriched with the customer's name:
 
@@ -33,7 +33,7 @@ public record OrderSearchDocument(string Id, string Number, decimal Total, strin
 
 ## Inline Calls
 
-The first thing everyone considers: save the document, then call the search engine straight after. Incredibly simple, but not a realistic option.
+The first thing everyone considers: save the document, then call the search engine straight after. Incredibly simple, but far from an ideal option.
 
 ```csharp [PlaceOrderHandler.cs]
 public class PlaceOrderHandler(IDocumentSession session, MeilisearchClient meili)
@@ -277,10 +277,6 @@ builder.UseWolverine(opts =>
 
 ## Change Data Capture with Wallaby
 
-::note
-Full disclosure: I wrote [Wallaby](https://wallabycdc.net), so weigh this section accordingly.
-::
-
 The last option skips the application entirely. Postgres already records every committed change in its write-ahead log, and logical replication streams it to anyone listening. Wallaby reads that stream, rehydrates Marten's JSONB back into your document type and hands batches of changes to a transform.
 
 ```csharp [OrderSearchTransform.cs]
@@ -345,6 +341,7 @@ Deletes come through as delete events, so there's no separate code path for them
 #cons
 - Needs logical replication enabled (`wal_level = logical`).
 - WAL consumes resources and requires monitoring
+- Additional dependency
 ::
 
 ## Which one should you use?
@@ -358,4 +355,4 @@ Deletes come through as delete events, so there's no separate code path for them
 | Extra infrastructure | None | None | Async daemon | Wolverine | Replication slot |
 
 If your data is already event sourced, then a subscription within the async daemon for one or two indexes makes a lot of sense. 
-For Marten documents or more complex scenarios then Wallaby is likely the most robust solution for your requirements.
+For Marten documents or more complex scenarios then [Wallaby](https://wallabycdc.net) is likely the most robust solution for your requirements.

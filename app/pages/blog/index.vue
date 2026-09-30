@@ -8,9 +8,14 @@ const { data: posts } = await useAsyncData('blog-posts', () =>
 
 useSeoMeta({
   title: 'Blog',
-  description: blogDescription,
-  ogTitle: 'Blog',
-  ogDescription: blogDescription
+  description: blogDescription
+})
+
+defineOgImage('Terminal.takumi', {
+  command: 'cd',
+  argument: '.\\blog\\',
+  title: 'Blog',
+  description: blogDescription
 })
 </script>
 

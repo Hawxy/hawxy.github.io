@@ -1,6 +1,4 @@
 <script setup lang="ts">
-const description = 'C#, Vue.js & AWS Architect. Prolific .NET and TypeScript open source contributor. JasperFx Maintainer.'
-
 useHead({
   titleTemplate: chunk => chunk && chunk !== siteName ? `${chunk} · ${siteName}` : siteName,
   meta: [
@@ -19,9 +17,7 @@ useHead({
 
 useSeoMeta({
   title: siteName,
-  description,
-  ogTitle: siteName,
-  ogDescription: description
+  description: siteDescription
 })
 
 const route = useRoute()
@@ -86,7 +82,7 @@ const headerCommand = computed<{ verb: string, arg?: string } | null>(() => {
             :ui="{ leadingIcon: 'size-4' }"
           />
           <UButton
-            to="https://github.com/Hawxy"
+            :to="githubUrl"
             target="_blank"
             icon="i-simple-icons-github"
             aria-label="GitHub profile"
@@ -96,7 +92,7 @@ const headerCommand = computed<{ verb: string, arg?: string } | null>(() => {
             :ui="{ leadingIcon: 'size-4' }"
           />
           <UButton
-            to="https://www.linkedin.com/in/jaedyntonee/"
+            :to="linkedinUrl"
             target="_blank"
             icon="i-simple-icons-linkedin"
             aria-label="LinkedIn profile"
