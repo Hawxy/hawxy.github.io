@@ -91,7 +91,8 @@ public class OrderSearchListener(MeilisearchClient meili) : DocumentSessionListe
                 .ToDictionary(c => c.Id);
 
             await index.AddDocumentsAsync(
-                orders.Select(o => OrderSearchDocument.From(o, customers.GetValueOrDefault(o.CustomerId))),
+                orders.Select(o => OrderSearchDocument.From(
+                    o, customers.GetValueOrDefault(o.CustomerId))),
                 cancellationToken: token);
         }
 
@@ -113,7 +114,8 @@ builder.Services.AddMarten(sp =>
 {
     var options = new StoreOptions();
     options.Connection(connectionString);
-    options.Listeners.Add(new OrderSearchListener(sp.GetRequiredService<MeilisearchClient>()));
+    options.Listeners.Add(
+        new OrderSearchListener(sp.GetRequiredService<MeilisearchClient>()));
     return options;
 });
 ```
@@ -160,7 +162,8 @@ public class OrderSearchSubscription : SubscriptionBase
         if (placed.Count > 0)
         {
             var customerIds = placed.Select(p => p.CustomerId).Distinct();
-            var customers = (await operations.LoadManyAsync<Customer>(cancellationToken, customerIds))
+            var customers = (await operations.LoadManyAsync<Customer>(
+                    cancellationToken, customerIds))
                 .ToDictionary(c => c.Id);
 
             await index.AddDocumentsAsync(
@@ -230,7 +233,8 @@ public static class PlaceOrderHandler
 public static class SyncOrderToSearchHandler
 {
     public static async Task Handle(
-        SyncOrderToSearch message, IQuerySession session, MeilisearchClient meili, CancellationToken ct)
+        SyncOrderToSearch message, IQuerySession session,
+        MeilisearchClient meili, CancellationToken ct)
     {
         var index = meili.Index("orders");
 
@@ -242,7 +246,8 @@ public static class SyncOrderToSearchHandler
         }
 
         var customer = await session.LoadAsync<Customer>(order.CustomerId, ct);
-        await index.AddDocumentsAsync([OrderSearchDocument.From(order, customer)], cancellationToken: ct);
+        await index.AddDocumentsAsync(
+            [OrderSearchDocument.From(order, customer)], cancellationToken: ct);
     }
 }
 ```
@@ -283,7 +288,8 @@ The last option skips the application entirely. Postgres already records every c
 public sealed class OrderSearchTransform : IWallabyMartenTransform<Order>
 {
     public async Task<IReadOnlyDictionary<DocumentKey, WallabyDocument?>> TransformAsync(
-        IQuerySession session, IReadOnlyList<ChangeEvent<Order>> changes, CancellationToken ct)
+        IQuerySession session, IReadOnlyList<ChangeEvent<Order>> changes,
+        CancellationToken ct)
     {
         var customerIds = changes.Select(c => c.Entity!.CustomerId).Distinct();
         var customers = (await session.LoadManyAsync<Customer>(ct, customerIds))

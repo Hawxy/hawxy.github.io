@@ -53,10 +53,11 @@ useSchemaOrg([
 </script>
 
 <template>
-  <div class="mx-auto max-w-4xl px-6 lg:grid lg:grid-cols-[minmax(0,42rem)_1fr] lg:gap-8">
+  <div class="mx-auto max-w-4xl px-6 lg:grid lg:grid-cols-[minmax(0,42rem)_1fr] lg:gap-8 xl:grid-cols-[51rem_11rem]">
+    <!-- On xl the grid runs past the container's right edge, so the article stays aligned with the header -->
     <article
       v-if="post"
-      class="min-w-0 max-w-2xl pt-20 pb-16 sm:pt-28 sm:pb-20"
+      class="min-w-0 max-w-2xl pt-20 pb-16 sm:pt-28 sm:pb-20 xl:max-w-none"
     >
       <header>
         <TerminalPrompt
