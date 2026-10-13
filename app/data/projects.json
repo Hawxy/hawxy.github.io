@@ -7,10 +7,10 @@
     "docsUrl": "https://wallabycdc.net",
     "nuget": "Wallaby",
     "description": "Postgres CDC Engine for .NET",
-    "stars": 7,
+    "stars": 14,
     "language": "C#",
     "archived": false,
-    "downloads": 11040,
+    "downloads": 11045,
     "createdAt": "2026-05-29T10:17:26Z"
   },
   {
@@ -24,7 +24,7 @@
     "stars": 48,
     "language": "C#",
     "archived": false,
-    "downloads": 797443,
+    "downloads": 798080,
     "createdAt": "2020-11-17T13:04:04Z"
   },
   {
@@ -38,7 +38,7 @@
     "stars": 40,
     "language": "C#",
     "archived": false,
-    "downloads": 130435,
+    "downloads": 130518,
     "createdAt": "2021-11-22T01:00:24Z"
   },
   {
@@ -52,7 +52,7 @@
     "stars": 69,
     "language": "C#",
     "archived": false,
-    "downloads": 79865,
+    "downloads": 79902,
     "createdAt": "2018-10-13T14:44:47Z"
   },
   {
@@ -63,10 +63,10 @@
     "docsUrl": "https://martendb.io",
     "nuget": "Marten",
     "description": ".NET Transactional Document DB and Event Store on PostgreSQL",
-    "stars": 3459,
+    "stars": 3465,
     "language": "C#",
     "archived": false,
-    "downloads": 20049430,
+    "downloads": 20077707,
     "createdAt": "2015-10-12T18:11:12Z"
   },
   {
@@ -80,7 +80,7 @@
     "stars": 520,
     "language": "C#",
     "archived": false,
-    "downloads": 3846603,
+    "downloads": 3852459,
     "createdAt": "2015-12-02T19:50:10Z"
   },
   {
@@ -96,20 +96,6 @@
     "archived": false,
     "downloads": null,
     "createdAt": "2022-07-03T08:47:45Z"
-  },
-  {
-    "section": "utility",
-    "repo": "Hawxy/Weasel.Quartz",
-    "blurb": null,
-    "logo": null,
-    "docsUrl": null,
-    "nuget": "Weasel.Quartz.Postgres",
-    "description": "Runtime Postgres SQL initialization & migration for Quartz.NET",
-    "stars": 2,
-    "language": "C#",
-    "archived": false,
-    "downloads": 24491,
-    "createdAt": "2024-07-06T16:10:32Z"
   },
   {
     "section": "utility",
@@ -194,5 +180,19 @@
     "archived": false,
     "downloads": null,
     "createdAt": "2026-08-27T09:59:58Z"
+  },
+  {
+    "section": "utility",
+    "repo": "Hawxy/TypeSafeAI.Net",
+    "blurb": null,
+    "logo": null,
+    "docsUrl": null,
+    "nuget": "TypeSafeAI",
+    "description": ".NET SDK for the TypeSafe AI platform",
+    "stars": 6,
+    "language": "C#",
+    "archived": false,
+    "downloads": 263,
+    "createdAt": "2026-09-17T14:12:45Z"
   }
 ]
