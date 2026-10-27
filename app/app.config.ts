@@ -31,7 +31,7 @@ export default defineAppConfig({
         slots: {
           // Scroll long lines rather than wrapping them, which drops indentation.
           // The elevated surface keeps the highlight themes' comments above WCAG AA contrast.
-          base: 'whitespace-pre wrap-normal bg-elevated'
+          base: 'whitespace-pre wrap-normal bg-elevated text-[0.8125rem] leading-[1.7]'
         }
       },
       blockquote: {

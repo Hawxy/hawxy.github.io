@@ -54,10 +54,11 @@ useSchemaOrg([
 
 <template>
   <div class="mx-auto max-w-4xl px-6 lg:grid lg:grid-cols-[minmax(0,42rem)_1fr] lg:gap-8 xl:grid-cols-[51rem_11rem]">
-    <!-- On xl the grid runs past the container's right edge, so the article stays aligned with the header -->
+    <!-- On xl the grid runs past the container's right edge, so the article stays aligned with the header.
+         Source Sans 3 has a short x-height and reads small at 16px, so post copy is set a step larger. -->
     <article
       v-if="post"
-      class="min-w-0 max-w-2xl pt-20 pb-16 sm:pt-28 sm:pb-20 xl:max-w-none"
+      class="post-article min-w-0 max-w-2xl pt-20 pb-16 text-[1.0625rem] sm:pt-28 sm:pb-20 xl:max-w-none"
     >
       <header>
         <TerminalPrompt
@@ -99,10 +100,9 @@ useSchemaOrg([
         class="-mt-2 mb-10 lg:hidden"
       />
 
-      <!-- Source Sans 3 has a short x-height and reads small at 16px, so post copy is set a step larger -->
       <ContentRenderer
         :value="post"
-        class="text-[1.0625rem]"
+        class="post-copy"
       />
 
       <nav

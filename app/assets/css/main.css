@@ -165,6 +165,37 @@ button:not(:disabled),
   background: repeating-linear-gradient(to bottom, var(--scanline) 0 1px, transparent 1px 4px);
 }
 
+/* Registered so the ch width resolves once in the body font, giving headings the same edge as paragraphs */
+@property --post-measure {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0px;
+}
+
+/* About 85 characters per line: Source Sans 3 averages ~0.82ch per character, and inline code chips run wider */
+.post-article {
+  --post-measure: 72ch;
+}
+
+/* Text is centred in the column */
+.post-article > :not(.post-copy),
+.post-copy > :is(p, ul, ol, h2, h3, blockquote) {
+  max-width: var(--post-measure);
+  margin-inline: auto;
+}
+
+/* Code blocks and tables extend a fixed step past the text on both sides, about 90 characters of 13px code */
+.post-copy > div:has(pre, table) {
+  max-width: calc(var(--post-measure) + 8rem);
+  margin-inline: auto;
+}
+
+/* Callouts extend by their own padding, so their text lines up with the paragraphs */
+.post-copy > div:not(:has(pre, table)) {
+  max-width: calc(var(--post-measure) + 2rem);
+  margin-inline: auto;
+}
+
 /* Blinking underscore cursor after a title */
 .blink-cursor {
   margin-left: 0.08em;

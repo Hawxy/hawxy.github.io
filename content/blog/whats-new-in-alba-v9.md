@@ -1,6 +1,6 @@
 ---
 title: What's new in Alba v9
-description: The biggest Alba release in years with host pooling, SSE support, a fluent builder and more
+description: The biggest Alba release in years with host pooling, SSE support and more
 date: 2026-11-10
 tags: [alba, aspnetcore, testing, dotnet]
 ---
@@ -295,7 +295,7 @@ png[..8].ShouldBe(new byte[] { 0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A })
 
 ## HTTP QUERY and OPTIONS
 
-Scenarios can now issue [HTTP QUERY](https://httpwg.org/http-extensions/draft-ietf-httpbis-safe-method-w-body.html) and OPTIONS requests, alongside the existing verbs. QUERY is a new verb options and represents a safe, idempotent request that carries a body, which suits endpoints like search with filters too large for a query string:
+Scenarios can now issue [HTTP QUERY](https://httpwg.org/http-extensions/draft-ietf-httpbis-safe-method-w-body.html) and OPTIONS requests, alongside the existing verbs. QUERY is a new verb option and represents a safe, idempotent request that carries a body, which suits endpoints like search with filters too large for a query string:
 
 ```csharp [SearchTests.cs]
 await host.Scenario(x =>
@@ -317,7 +317,6 @@ await host.Scenario(x =>
 
 - A failure in an extension's `Start` now tears down the application Alba already started, instead of leaving an orphaned host running for the rest of the test session.
 - `DisposeAsync()` completes every teardown step even when one fails, and reports the failures together.
-- Alba's MVC JSON handling no longer picks third-party formatters (such as OData's) that advertise `application/json` but can't run outside their own pipeline ([#116](https://github.com/JasperFx/alba/issues/116)).
 - Exceptions from async before-each actions surface with their original stack traces.
 
 ## Docs for agents and Aspire
@@ -325,5 +324,7 @@ await host.Scenario(x =>
 The docs now include a ready-made [prompt for AI coding agents](https://jasperfx.github.io/alba/guide/agents.html), along with [llms.txt](https://jasperfx.github.io/alba/llms.txt) and [llms-full.txt](https://jasperfx.github.io/alba/llms-full.txt), and a new [guide for testing with .NET Aspire](https://jasperfx.github.io/alba/guide/aspire.html) dependencies.
 
 ## Upgrading
+
+As part of this release, support for .NET 8 & 9 has been dropped.
 
 I'd highly recommend reading the full [v9 changelog](https://github.com/JasperFx/alba/blob/master/v9_CHANGELOG.md) to see all of our new features and breaking changes.
