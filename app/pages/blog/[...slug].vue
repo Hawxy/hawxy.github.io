@@ -99,7 +99,11 @@ useSchemaOrg([
         class="-mt-2 mb-10 lg:hidden"
       />
 
-      <ContentRenderer :value="post" />
+      <!-- Source Sans 3 has a short x-height and reads small at 16px, so post copy is set a step larger -->
+      <ContentRenderer
+        :value="post"
+        class="text-[1.0625rem]"
+      />
 
       <nav
         aria-label="More posts"

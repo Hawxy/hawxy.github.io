@@ -13,18 +13,19 @@
     "typecheck": "nuxt typecheck"
   },
   "dependencies": {
-    "@iconify-json/lucide": "^1.2.143",
-    "@iconify-json/simple-icons": "^1.2.100",
-    "@nuxt/content": "^3.16.1",
-    "@nuxt/ui": "^4.11.3",
-    "@nuxtjs/seo": "5.3.16",
-    "@takumi-rs/core": "^2.15.0",
-    "nuxt": "^4.6.1",
+    "@iconify-json/lucide": "^1.2.147",
+    "@iconify-json/simple-icons": "^1.2.101",
+    "@nuxt/content": "^3.16.2",
+    "@nuxt/fonts": "^1.2.0",
+    "@nuxt/ui": "^4.12.0",
+    "@nuxtjs/seo": "6.0.1",
+    "@takumi-rs/core": "^2.18.2",
+    "nuxt": "^4.6.3",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.17.0",
-    "eslint": "^10.12.0",
+    "eslint": "^10.13.0",
     "typescript": "^6.0.3",
     "vue-tsc": "^3.3.13"
   },
