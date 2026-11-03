@@ -7,10 +7,10 @@
     "docsUrl": "https://wallabycdc.net",
     "nuget": "Wallaby",
     "description": "Postgres CDC Engine for .NET",
-    "stars": 14,
+    "stars": 15,
     "language": "C#",
     "archived": false,
-    "downloads": 11045,
+    "downloads": 13637,
     "createdAt": "2026-05-29T10:17:26Z"
   },
   {
@@ -24,7 +24,7 @@
     "stars": 48,
     "language": "C#",
     "archived": false,
-    "downloads": 798080,
+    "downloads": 823123,
     "createdAt": "2020-11-17T13:04:04Z"
   },
   {
@@ -38,7 +38,7 @@
     "stars": 40,
     "language": "C#",
     "archived": false,
-    "downloads": 130518,
+    "downloads": 134187,
     "createdAt": "2021-11-22T01:00:24Z"
   },
   {
@@ -52,7 +52,7 @@
     "stars": 69,
     "language": "C#",
     "archived": false,
-    "downloads": 79902,
+    "downloads": 81046,
     "createdAt": "2018-10-13T14:44:47Z"
   },
   {
@@ -63,10 +63,10 @@
     "docsUrl": "https://martendb.io",
     "nuget": "Marten",
     "description": ".NET Transactional Document DB and Event Store on PostgreSQL",
-    "stars": 3465,
+    "stars": 3466,
     "language": "C#",
     "archived": false,
-    "downloads": 20077707,
+    "downloads": 21283236,
     "createdAt": "2015-10-12T18:11:12Z"
   },
   {
@@ -80,7 +80,7 @@
     "stars": 520,
     "language": "C#",
     "archived": false,
-    "downloads": 3852459,
+    "downloads": 4151622,
     "createdAt": "2015-12-02T19:50:10Z"
   },
   {
@@ -108,7 +108,7 @@
     "stars": 0,
     "language": "C#",
     "archived": false,
-    "downloads": 1916,
+    "downloads": 2646,
     "createdAt": "2026-03-23T11:01:19Z"
   },
   {
@@ -150,7 +150,7 @@
     "stars": 0,
     "language": "C#",
     "archived": false,
-    "downloads": 467,
+    "downloads": 669,
     "createdAt": "2026-07-22T12:32:39Z"
   },
   {
@@ -164,7 +164,7 @@
     "stars": 0,
     "language": "C#",
     "archived": false,
-    "downloads": 232,
+    "downloads": 326,
     "createdAt": "2026-08-18T09:50:50Z"
   },
   {
@@ -192,7 +192,7 @@
     "stars": 6,
     "language": "C#",
     "archived": false,
-    "downloads": 263,
+    "downloads": 2283,
     "createdAt": "2026-09-17T14:12:45Z"
   }
 ]

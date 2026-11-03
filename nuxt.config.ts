@@ -4,6 +4,8 @@ import { githubUrl, linkedinUrl, siteAuthor, siteDescription, siteName, siteUrl 
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
+    // Registered before @nuxtjs/seo, which needs @nuxt/fonts 1.x to render OG images with site fonts
+    '@nuxt/fonts',
     '@nuxt/ui',
     '@nuxt/content',
     '@nuxtjs/seo'
@@ -43,6 +45,11 @@ export default defineNuxtConfig({
     experimental: {
       sqliteConnector: 'native'
     }
+  },
+
+  // Nuxt UI would otherwise install its own older @nuxt/fonts
+  ui: {
+    fonts: false
   },
 
   routeRules: {
@@ -88,6 +95,17 @@ export default defineNuxtConfig({
         name: 'Berkeley Mono',
         src: '/fonts/BerkeleyMonoVariable.woff2',
         weight: [400, 700],
+        display: 'swap',
+        global: true
+      },
+      // Body text, downloaded from Google Fonts at build time and served from the site.
+      // Global so its @font-face rules are always included, since it's only referenced through --font-sans.
+      {
+        name: 'Source Sans 3',
+        provider: 'google',
+        weights: [400, 500, 600, 700],
+        styles: ['normal', 'italic'],
+        subsets: ['latin', 'latin-ext'],
         display: 'swap',
         global: true
       }
