@@ -2,14 +2,14 @@
 title: What's new in Alba v9 in under 5 minutes
 description: The biggest Alba release in years with host pooling, SSE support and more
 date: 2026-11-10
-tags: [alba, aspnetcore, testing, dotnet]
+tags: [alba, aspnetcore, testing, dotnet, csharp]
 ---
 
-If you're reading this then [Alba](https://github.com/JasperFx/alba) v9 has been released. This post covers all the big new features worth knowing about. For the full list of changes, see the [v9 changelog](https://github.com/JasperFx/alba/blob/master/v9_CHANGELOG.md).
+If you're reading this then [Alba](https://jasperfx.github.io/alba/) v9 has been released. This post covers all the big new features worth knowing about. For the full list of changes, see the [v9 changelog](https://github.com/JasperFx/alba/blob/master/v9_CHANGELOG.md).
 
 ## Host pooling for parallel tests
 
-Most Alba test suites get built in the same way, you start with one `AlbaHost` in a shared fixture that gets reused by every test. It's very fast, right up until two tests touch the same database rows at the same time and you're left chasing data corruption or flaky failures. From there you have two options, turn off parallelism and watch the suite slow to a crawl, or start a fresh host for every test and pay for application startup hundreds of times over.
+Most Alba test suites get built in the same way, with you starting with one `AlbaHost` in a shared fixture that gets reused by every test. It's very fast, right up until two tests touch the same database rows at the same time and you're left dealing with data corruption or flaky failures. From there you have two options, turn off parallelism and watch the suite slow to a crawl, or start a fresh host for every test and pay for application startup hundreds of times over.
 
 Alba 9 adds a third option. `AlbaHostPool` keeps a small set of hosts running and rents them out to individual tests. Your tests still run in parallel, but each one gets a host to itself, and that host is cleaned up before anyone else can reuse it.
 
