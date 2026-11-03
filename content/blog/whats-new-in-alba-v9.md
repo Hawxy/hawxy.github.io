@@ -1,5 +1,5 @@
 ---
-title: What's new in Alba v9
+title: What's new in Alba v9 in under 5 minutes
 description: The biggest Alba release in years with host pooling, SSE support and more
 date: 2026-11-10
 tags: [alba, aspnetcore, testing, dotnet]
@@ -15,7 +15,7 @@ Alba 9 adds a third option. `AlbaHostPool` keeps a small set of hosts running an
 
 ### Setting up a pool
 
-Let's wire one up with TUnit. A pool is built from a factory that Alba calls whenever it needs another host. The factory is provided metadata about where it sits within the pool, allowing for easy isolation of infrastructure. In this example, each one gets its own database:
+Let's wire one up within a TUnit project. A pool is built from a factory that Alba calls whenever it needs a new host. The factory is provided metadata about where it sits within the pool, allowing for easy isolation of infrastructure. In this example, each one gets its own database to permit isolated testing:
 
 ```csharp [AlbaPool.cs]
 public sealed class AlbaPool : IAsyncDisposable
@@ -41,7 +41,7 @@ public sealed class PooledHostsLimit : IParallelLimit
 }
 ```
 
-Hosts are started lazily, so if your run never has more than two tests in flight, you only pay for two host. TUnit runs everything in parallel by default, so the parallel limiter keeps it from starting more pooled tests than there are hosts to go around. We recommend experimenting with this based on your available local & CI resources.
+Hosts are started lazily, so locally testing one or two tests does not excessively use resources. TUnit runs everything in parallel by default, so the parallel limiter keeps it from starting more pooled tests than there are hosts to go around. We recommend experimenting with your maximum concurrency based on your available local & CI resources.
 
 ### Borrowing a host
 
@@ -71,9 +71,9 @@ public abstract class PooledTestBase(AlbaPool pool) : IAsyncInitializer, IAsyncD
 }
 ```
 
-Passing the test's name to `RentAsync` is useful for when something goes wrong. If every host is being held for too long, a timeout error lists which tests are deadlocked, so a lease that never gets returned is easy to track down.
+Passing the test's name to `RentAsync` is useful for when something goes wrong. If every host is being held for too long, a timeout error lists which tests are deadlocked, so a lease that never returns is easy to track down.
 
-The lease itself is an `IAlbaHost`, so the tests don't look any different from the ones you'd write against a shared host:
+The lease itself is an `IAlbaHost`, so the tests don't look any different from the ones you'd write against a usual shared host:
 
 ```csharp [PooledMathTests.cs]
 [ClassDataSource<AlbaPool>(Shared = SharedType.PerTestSession)]
