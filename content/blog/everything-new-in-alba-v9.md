@@ -5,7 +5,9 @@ date: 2026-11-10
 tags: [alba, aspnetcore, testing, dotnet, csharp]
 ---
 
-If you're reading this then [Alba](https://jasperfx.github.io/alba/) v9 has been released, alongside our new docs website. This post covers all the big new features that you'll find useful. For the full list of changes, see the [v9 changelog](https://github.com/JasperFx/alba/releases/tag/v9.0.0).
+If you're reading this then Alba v9 has been released, alongside our [new docs](https://jasperfx.github.io/alba/). This post covers all the big new features that you'll find useful. For the full list of changes, see the [v9 changelog](https://github.com/JasperFx/alba/releases/tag/v9.0.0). 
+
+v9 is the largest update in Alba's history, and focuses on making Alba more suitable for mass concurrency testing, something that's all the more common in the current world of AI-driven development.
 
 ## Host pooling for parallel tests
 
@@ -127,14 +129,7 @@ The [pooling docs](https://jasperfx.github.io/alba/guide/pooling.html) go furthe
 
 Alba no longer performs any synchronous reads or writes against the server streams, and it no longer forces `AllowSynchronousIO = true` on the `TestServer`. If middleware or a formatter in your app does blocking stream I/O, Kestrel would have rejected it in production, and now the tests will too.
 
-Behind the scenes, this was previously required as we would rewind the response stream in various places in order for tests to be able to re-read the stream. Instead, the response body is now buffered once, asynchronously, as soon as the request completes. Every read after that, including the synchronous `ReadAsText()` and `ReadAsJson<T>()`, is an in-memory, repeatable operation, so you can read the body as JSON, then as text, then assert on it without worrying about stream positions or stream-copy overhead.
-
-If your application genuinely needs synchronous I/O, opt back in after the host starts:
-
-```csharp [ApiFixture.cs]
-var host = await AlbaHost.For<Program>();
-host.Server.AllowSynchronousIO = true;
-```
+Behind the scenes, this was previously required as we would rewind the response stream in various places and permit consumers to access it via sync APIs. Instead, the response body is now buffered once, asynchronously, as soon as the request completes. Every read after that, including the synchronous `ReadAsText()` and `ReadAsJson<T>()`, is an in-memory, repeatable operation, so you can read the body as JSON, then as text, then assert on it without worrying about stream positions or stream-copy overhead.
 
 Related to this, `BeforeEachAsync` hooks now receives the `Scenario` and is properly awaited before the request executes, instead of blocking a thread inside the test server:
 
@@ -387,8 +382,6 @@ await host.Scenario(x =>
 
 - File uploads no longer need a hand-built `MultipartFormDataContent`: `x.Post.MultipartFormData(form => form.File("upload", bytes, "report.csv").Field("tag", "q3"))` builds the body and infers each file's content type from its name.
 - On .NET 11, Alba is compiled with runtime async, so stack traces through Alba in the debugger or a profiler show its own methods without the async state machine frames in between.
-- A failure in an extension's `Start` now tears down the application Alba already started, instead of leaving an orphaned host running for the rest of the test session.
-- Exceptions from async `before-each` actions surface with their original stack traces.
 
 ## Docs for agents and Aspire
 
