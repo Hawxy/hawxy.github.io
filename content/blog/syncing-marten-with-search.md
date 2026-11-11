@@ -2,7 +2,7 @@
 title: Keeping a search index in sync with Marten
 description: Five ways to push Marten documents into your search engine.
 date: 2026-09-29
-tags: [marten, postgres, search, dotnet]
+tags: [marten, postgres, search, dotnet, csharp]
 ---
 
 Marten is great at storing documents, but sooner or later someone wants full-text search with typo tolerance or faceting. You'll likely reach for a dedicated engine like Meilisearch, Elasticsearch or OpenSearch. Querying the index is easy, but ensuring your index is kept up to date is not.

@@ -5,7 +5,7 @@ date: 2026-09-28
 tags: [meta]
 ---
 
-This draft only exists in `pnpm dev`. It shows how each element renders, so it doubles as a template for new posts. Body copy is set in the system sans for readability, while headings, code and metadata use **Berkeley Mono**. Links look [like this](https://nuxt.com), and *emphasis* works as expected.
+This draft only exists in `pnpm dev`. It shows how each element renders, so it doubles as a template for new posts. Body copy is set in **Source Sans 3** for readability, while headings, code and metadata use **Berkeley Mono**. Links look [like this](https://nuxt.com), and *emphasis* works as expected.
 
 ## Headings
 
