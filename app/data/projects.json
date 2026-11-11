@@ -7,10 +7,10 @@
     "docsUrl": "https://wallabycdc.net",
     "nuget": "Wallaby",
     "description": "Postgres CDC Engine for .NET",
-    "stars": 15,
+    "stars": 16,
     "language": "C#",
     "archived": false,
-    "downloads": 13637,
+    "downloads": 14549,
     "createdAt": "2026-05-29T10:17:26Z"
   },
   {
@@ -24,7 +24,7 @@
     "stars": 48,
     "language": "C#",
     "archived": false,
-    "downloads": 823123,
+    "downloads": 836387,
     "createdAt": "2020-11-17T13:04:04Z"
   },
   {
@@ -38,7 +38,7 @@
     "stars": 40,
     "language": "C#",
     "archived": false,
-    "downloads": 134187,
+    "downloads": 136376,
     "createdAt": "2021-11-22T01:00:24Z"
   },
   {
@@ -52,7 +52,7 @@
     "stars": 69,
     "language": "C#",
     "archived": false,
-    "downloads": 81046,
+    "downloads": 81803,
     "createdAt": "2018-10-13T14:44:47Z"
   },
   {
@@ -63,10 +63,10 @@
     "docsUrl": "https://martendb.io",
     "nuget": "Marten",
     "description": ".NET Transactional Document DB and Event Store on PostgreSQL",
-    "stars": 3466,
+    "stars": 3471,
     "language": "C#",
     "archived": false,
-    "downloads": 21283236,
+    "downloads": 21971112,
     "createdAt": "2015-10-12T18:11:12Z"
   },
   {
@@ -77,10 +77,10 @@
     "docsUrl": "https://jasperfx.github.io/alba/",
     "nuget": "Alba",
     "description": "Easy integration testing for ASP.NET Core applications",
-    "stars": 520,
+    "stars": 524,
     "language": "C#",
     "archived": false,
-    "downloads": 4151622,
+    "downloads": 4302439,
     "createdAt": "2015-12-02T19:50:10Z"
   },
   {
@@ -108,7 +108,7 @@
     "stars": 0,
     "language": "C#",
     "archived": false,
-    "downloads": 2646,
+    "downloads": 3134,
     "createdAt": "2026-03-23T11:01:19Z"
   },
   {
@@ -150,7 +150,7 @@
     "stars": 0,
     "language": "C#",
     "archived": false,
-    "downloads": 669,
+    "downloads": 901,
     "createdAt": "2026-07-22T12:32:39Z"
   },
   {
@@ -164,7 +164,7 @@
     "stars": 0,
     "language": "C#",
     "archived": false,
-    "downloads": 326,
+    "downloads": 357,
     "createdAt": "2026-08-18T09:50:50Z"
   },
   {
@@ -192,7 +192,7 @@
     "stars": 6,
     "language": "C#",
     "archived": false,
-    "downloads": 2283,
+    "downloads": 3086,
     "createdAt": "2026-09-17T14:12:45Z"
   }
 ]
