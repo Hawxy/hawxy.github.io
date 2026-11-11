@@ -7,14 +7,17 @@ export default defineAppConfig({
       neutral: 'neutral'
     },
     prose: {
+      // The markdown markers in main.css take the place of the hover link icon, which would overlap them
       h2: {
         slots: {
-          base: 'font-mono text-[1.375rem] leading-snug font-semibold'
+          base: 'font-mono text-2xl leading-snug font-bold mt-14',
+          leading: 'lg:hidden'
         }
       },
       h3: {
         slots: {
-          base: 'font-mono text-lg font-semibold'
+          base: 'font-mono text-lg font-semibold',
+          leading: 'lg:hidden'
         }
       },
       // Relative line height, so it scales with the post copy size instead of the defaults' fixed 28px

@@ -196,6 +196,29 @@ button:not(:disabled),
   margin-inline: auto;
 }
 
+/* Markdown heading markers, in keeping with the post being read with Get-Content */
+.post-copy > h2 > a::before,
+.post-copy > h3 > a::before {
+  color: var(--ui-primary);
+  transition: text-shadow 0.25s;
+}
+
+/* Empty alt text keeps screen readers from announcing the markers */
+.post-copy > h2 > a::before {
+  content: '## ';
+  content: '## ' / '';
+}
+
+.post-copy > h3 > a::before {
+  content: '### ';
+  content: '### ' / '';
+  opacity: 0.7;
+}
+
+.post-copy > :is(h2, h3) > a:hover::before {
+  text-shadow: var(--text-glow-primary);
+}
+
 /* Blinking underscore cursor after a title */
 .blink-cursor {
   margin-left: 0.08em;
