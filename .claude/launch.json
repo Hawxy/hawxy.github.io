@@ -4,7 +4,7 @@
     {
       "name": "portfolio-dev",
       "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["dev"],
+      "runtimeArgs": ["dev", "--host", "localhost"],
       "port": 3000
     }
   ]

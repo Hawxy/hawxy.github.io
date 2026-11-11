@@ -5,7 +5,7 @@ date: 2026-11-10
 tags: [alba, aspnetcore, testing, dotnet, csharp]
 ---
 
-If you're reading this then [Alba](https://jasperfx.github.io/alba/) v9 has been released. This post covers all the big new features worth knowing about. For the full list of changes, see the [v9 changelog](https://github.com/JasperFx/alba/releases/tag/v9.0.0).
+If you're reading this then [Alba](https://jasperfx.github.io/alba/) v9 has been released, alongside our new docs webiste. This post covers all the big new features that you'll find useful. For the full list of changes, see the [v9 changelog](https://github.com/JasperFx/alba/releases/tag/v9.0.0).
 
 ## Host pooling for parallel tests
 

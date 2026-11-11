@@ -24,6 +24,11 @@ export default defineAppConfig({
       li: {
         base: 'my-1.5 ps-1.5 leading-[1.7] [&>ul]:my-0'
       },
+      // Inline rather than inline-block, so trailing punctuation can't wrap onto its own line.
+      // Cloned decoration keeps the border and padding on each piece when long code wraps.
+      code: {
+        base: 'inline box-decoration-clone'
+      },
       a: {
         base: 'border-primary/40'
       },
