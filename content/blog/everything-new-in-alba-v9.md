@@ -143,7 +143,7 @@ host.BeforeEachAsync(async scenario =>
 
 ## Fluent host configuration
 
-Every bootstrapping method now returns a chainable & awaitable `AlbaHostBuilder`. This is done to improve readability and provide more standardize APIs for common operations, such as configuration overrides. Your own test suite can build on this syntax to apply its own extensions.
+Every bootstrapping method now returns a chainable & awaitable `AlbaHostBuilder`. This is done to improve readability and provide more standardized APIs for common operations, such as configuration overrides. Your own test suite can build on this syntax to apply its own extensions.
 
 ```csharp [ApiFixture.cs]
 await using var host = await AlbaHost.For<Program>(x =>
@@ -385,7 +385,7 @@ await host.Scenario(x =>
 
 ## Docs for agents and Aspire
 
-The docs now include a ready-made [prompt for AI coding agents](https://jasperfx.github.io/alba/guide/agents.html), along with [llms.txt](https://jasperfx.github.io/alba/llms.txt) and [llms-full.txt](https://jasperfx.github.io/alba/llms-full.txt), and a new [guide for testing with .NET Aspire](https://jasperfx.github.io/alba/guide/aspire.html) dependencies.
+The docs now include a ready-made [prompt for AI coding agents](https://jasperfx.github.io/alba/guide/gettingstarted#using-an-ai-coding-agent), along with [llms.txt](https://jasperfx.github.io/alba/llms.txt) and [llms-full.txt](https://jasperfx.github.io/alba/llms-full.txt), and a new [guide for testing with .NET Aspire](https://jasperfx.github.io/alba/guide/aspire.html) dependencies.
 
 ## Upgrading
 
